@@ -13,7 +13,7 @@
   * [model](https://github.com/seolbb/final-project/tree/main/MeRoom/src/main/java/com/spring/mr/vo/oneday)
   * [view](https://github.com/seolbb/final-project/tree/main/MeRoom/src/main/webapp)
   * [controller](https://github.com/seolbb/final-project/blob/main/MeRoom/src/main/java/com/spring/mr/controller/oneday/OnedayClassController.java)
-  * [sql](/final-project/tree/main/MeRoom/sql/)
+  * [sql](https://github.com/seolbb/final-project/tree/main/MeRoom/sql)
 
 
 ### 📌사용기술
