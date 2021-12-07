@@ -10,7 +10,7 @@
        
           
 ### 📌소스코드
-  * [model](/final-project/tree/main/MeRoom/src/main/java/com/spring/mr/vo/)
+  * [model](https://github.com/seolbb/final-project/tree/main/MeRoom/src/main/java/com/spring/mr/vo/oneday)
   * [view](/final-project/tree/main/MeRoom/src/main/webapp/views/)
   * [controller](/final-project/tree/main/MeRoom/src/main/java/com/spring/mr/controller/)
   * [sql](/final-project/tree/main/MeRoom/sql/)
