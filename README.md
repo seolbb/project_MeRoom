@@ -25,7 +25,7 @@
           
           
 ### 📌DB ERD
-(![2021-12-07 233528](https://user-images.githubusercontent.com/92971809/145048625-b4f97d22-a140-464d-ae8a-c63ccd8cc491.png)
+![2021-12-07 233528](https://user-images.githubusercontent.com/92971809/145048625-b4f97d22-a140-464d-ae8a-c63ccd8cc491.png)
 
 
 ### 📌VIEW
