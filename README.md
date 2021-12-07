@@ -12,7 +12,7 @@
 ### 📌소스코드
   * [model](https://github.com/seolbb/final-project/tree/main/MeRoom/src/main/java/com/spring/mr/vo/oneday)
   * [view](https://github.com/seolbb/final-project/tree/main/MeRoom/src/main/webapp)
-  * [controller](/final-project/tree/main/MeRoom/src/main/java/com/spring/mr/controller/)
+  * [controller](https://github.com/seolbb/final-project/blob/main/MeRoom/src/main/java/com/spring/mr/controller/oneday/OnedayClassController.java)
   * [sql](/final-project/tree/main/MeRoom/sql/)
 
 
