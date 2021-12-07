@@ -25,7 +25,7 @@
           
           
 ### 📌DB ERD
-![구현ERD](https://user-images.githubusercontent.com/68181461/138590422-93e5e9f0-af55-49e2-a067-eeaf578b758a.png)
+![구현ERD](![2021-12-07 233528](https://user-images.githubusercontent.com/92971809/145048625-b4f97d22-a140-464d-ae8a-c63ccd8cc491.png)
 
 
 ### 📌VIEW
