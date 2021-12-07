@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="enjoyDAO">
+	
+	<insert id="insertEnjoy" parameterType="com.spring.mr.vo.enjoy.EnjoyVO">
+		INSERT INTO ENJOY (EID, ECATEGORY, ETITLE, ETEXT, EPHONE, ELOCATION, EPRICE, ETIME, EINFO, EFILEPATH)
+		VALUES ((SELECT NVL(MAX(EID),0)+1 FROM ENJOY), #{ecategory}, #{etitle}, #{etext},
+			 #{ephone}, #{elocation}, #{eprice}, #{etime}, #{einfo}, #{efilepath})
+	</insert>
+	
+	
+	<select id="getEnjoyList" resultType="com.spring.mr.vo.enjoy.EnjoyVO" parameterType="com.spring.mr.vo.enjoy.EnjoyVO" >
+		SELECT * FROM ENJOY ORDER BY EID
+	</select>
+	
+	 <select id="getEnjoy" resultType="com.spring.mr.vo.enjoy.EnjoyVO" parameterType="com.spring.mr.vo.enjoy.EnjoyVO" >
+		SELECT * FROM ENJOY WHERE EID = #{eid}
+	</select> 
+	
+	
+	<update id="updateEnjoy" parameterType="com.spring.mr.vo.enjoy.EnjoyVO">
+		UPDATE ENJOY
+    	SET ECATEGORY = #{ecategory},
+        	ETITLE = #{etitle},
+        	ETEXT = #{etext},            
+        	EPHONE = #{ephone},
+        	ELOCATION = #{elocation},
+        	EPRICE = #{eprice},
+        	ETIME = #{etime},
+        	EINFO = #{einfo},
+        	EFILEPATH = #{efilepath}
+        	WHERE EID = #{eid}
+	</update>
+	
+	<delete id="deleteEnjoy" parameterType="com.spring.mr.vo.enjoy.EnjoyVO">
+		DELETE FROM ENJOY WHERE EID = #{eid}
+	</delete>
+	
+	
+	<!-- 음식 조회 -->
+	<select id="getFoodsList" resultType="com.spring.mr.vo.enjoy.EnjoyVO" >
+		SELECT ROWNUM AS EID, F.ECATEGORY, F.ETITLE, F.ETEXT, F.EPHONE, F.ELOCATION, F.EPRICE, F.ETIME, F.EINFO, F.EFILEPATH
+ 		 FROM (SELECT * FROM ENJOY WHERE ECATEGORY = 'FOODS') F
+	</select>
+	<select id="getEntertainsList" resultType="com.spring.mr.vo.enjoy.EnjoyVO" >
+		SELECT ROWNUM AS EID, E.ECATEGORY, E.ETITLE, E.ETEXT, E.EPHONE, E.ELOCATION, E.EPRICE, E.ETIME, E.EINFO, E.EFILEPATH
+ 		 FROM (SELECT * FROM ENJOY WHERE ECATEGORY = 'ENTERTAINS') E
+	</select>
+	
+	
+	
+</mapper>
+  

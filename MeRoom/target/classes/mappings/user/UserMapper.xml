@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="userDAO">
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="user">
+		INSERT INTO MEMBER 
+		(MEMBERID, PASSWORD, NAME, NICKNAME, BIRTH, PHONE, ADDRESS, EMAIL, JOINDATE)
+		VALUES (#{memberId}, #{password}, #{name}, #{nickname}, #{birth}, #{phone}, #{address}, #{email}, TO_CHAR(SYSDATE,'YYYY/MM/DD'))
+
+	</insert>
+	
+	<!-- 유저 1명 조회 -->
+	<select id="selectOne" parameterType="string" resultType="user">
+		SELECT * FROM MEMBER WHERE MEMBERID = #{memberId}
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="map" resultType="user">
+		SELECT * FROM MEMBER WHERE MEMBERID = #{memberId} AND PASSWORD = #{password}
+	</select>
+	
+	<!-- 회원정보수정 -->
+	<update id="updateUser" parameterType="user">
+		UPDATE MEMBER
+			SET PASSWORD = #{password},
+			    NAME = #{name},
+			    NICKNAME = #{nickname},
+			    BIRTH = #{birth},
+			    PHONE = #{phone},
+			    ADDRESS = #{address},
+			    EMAIL = #{email}
+			WHERE MEMBERID = #{memberId}
+	</update>
+    
+	<!-- 회원탈퇴 -->
+	<update id="deleteUser" parameterType="user">
+		UPDATE MEMBER SET PASSWORD = '', WTHDRDATE = TO_CHAR(SYSDATE, 'YYYY/MM/DD') WHERE MEMBERID = #{memberId}
+	</update>
+	
+	<!-- 관리자 회원삭제 -->
+	<delete id="deleteAfter" parameterType="user">
+		DELETE MEMBER WHERE WTHDRDATE = TO_CHAR(SYSDATE-14, 'YYYY/MM/DD')
+	</delete>
+	
+	<!-- 관리자 삭제대상 조회 -->
+	<select id="deleteUserList" parameterType="string" resultType="user">
+		SELECT * FROM MEMBER WHERE WTHDRDATE = TO_CHAR(SYSDATE-14, 'YYYY/MM/DD')
+	</select>
+	
+	
+	
+	<!-- 아이디찾기 - 이메일 -->
+	<select id="idFindMail" parameterType="map" resultType="user">
+		SELECT * FROM MEMBER WHERE NAME = #{name} AND EMAIL = #{email}
+	</select>
+	
+	<!-- 아이디찾기 - 폰 -->
+	<select id="idFindPhone" parameterType="map" resultType="user">
+		SELECT * FROM MEMBER WHERE NAME = #{name} AND PHONE = #{phone}
+	</select>
+	
+	<!-- 비밀번호찾기 - 이메일 -->
+	<select id="pwFindMail" parameterType="map" resultType="user">
+		SELECT * FROM MEMBER WHERE MEMBERID = #{memberId} AND NAME = #{name} AND EMAIL = #{email} 
+	</select>
+	
+	<!-- 비밀번호찾기 - 폰 -->
+	<select id="pwFindPhone" parameterType="map" resultType="user">
+		SELECT * FROM MEMBER WHERE MEMBERID = #{memberId} AND NAME = #{name} AND PHONE = #{phone}
+	</select>
+	
+	   <!-- 회원 전체 조회 -->
+   <select id="selectList" parameterType="user" resultType="user">
+  	<![CDATA[ 
+      SELECT MEMBERID, NAME, NICKNAME, BIRTH, PHONE, ADDRESS, EMAIL, TO_DATE(JOINDATE, 'YYYY/MM/DD') AS JOINDATE
+        FROM MEMBER
+       WHERE ${searchCondition} LIKE '%' || #{searchKeyword} || '%' AND ROWNUM <=10
+       ]]>
+   </select>
+   
+      <!-- 개인 문의 남긴  1명 조회 -->
+   <select id="selectOneQna" parameterType="Integer" resultType="user">
+      SELECT DISTINCT M.MEMBERID, M.PHONE, M.NAME
+          FROM QUESTION Q, MEMBER M, ANSWER A
+        WHERE Q.MEMBERID = M.MEMBERID AND Q.Q_IDX = A.Q_IDX2
+            AND Q.Q_IDX = #{qIdx} 
+   </select>
+   
+</mapper>
+
+
+
+
+
+
+
+

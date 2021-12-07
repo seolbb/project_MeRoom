@@ -1,0 +1,224 @@
+
+
+/* body */
+
+.container-full{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.main-image{
+    height: 500px;
+    margin-bottom:80px;
+    position: relative;
+    background: #000;
+}
+
+.main-image .main-bg{
+    background-image: url(../img/roomBanner.jpg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+}
+.title{
+    position: absolute;
+    z-index: 10;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+    animation-duration: 4s;
+}
+
+.main-title{
+    line-height: 1;
+    font-size: 40px;
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-name: top-title;
+ 
+}
+
+.single .single-two{
+    font-weight: 550;
+    letter-spacing: 0.1em;
+    margin-right:35px;
+    font-family:  'Apple SD Gothic Neo', 'Malgun Gothic';
+}
+
+.single-one{
+	margin-top:20px;
+	margin-right:35px;
+}
+.main-image .title2{
+    bottom: 130px;
+    font-size: 12px;
+    color: #fff;
+    animation-name: top-summary;
+    
+}
+
+@keyframes top-title{
+0%{
+    opacity : 0;
+}
+100%{
+    opacity : 1;
+    }
+}
+
+@keyframes top-summary{
+    0%{
+        opacity : 0;
+    }
+    100%{
+        opacity : 1;
+        }
+    }
+
+.sub-container{
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto !important;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: 0 auto;
+}
+
+
+.positionR{
+    position: relative;
+}
+
+.items>ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.items>ul li{
+    width: 100%;
+    float: left;
+    list-style-type: none;
+}
+
+.items>ul li .rest-item{
+    margin-bottom: 50px;
+}
+
+.items>ul li .rest-item .image-wrap{
+    padding-bottom: 32.5%;
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    min-height: 44px;
+}
+
+.zoom{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+.zoom-one{
+    background-image: url(../img/room-2.jpg);
+    background-position: 0px 300px;
+    background-color: #000;
+
+}
+.zoom, .zoom-one{
+    transform: scale3d(1, 1, 1) rotate(
+        0deg);
+}
+
+.zoom-one:hover{
+    cursor:pointer;
+    transform:scale(1.1); /* 마우스 오버시 이미지 크기를 1.1 배만큼 확대시킨다. */
+    -o-transform:scale(1.1); 
+    -moz-transform:scale(1.1);
+    -webkit-transform:scale(1.1);
+
+
+    transition: transform .7s;  
+    -o-transition: transform .7s;
+    -moz-transition: transform .7s;
+    -webkit-transition: transform .7s;
+
+}
+
+.zoom-one{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f7f7f7;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 1s transform;
+    will-change: transform;
+    transform-origin: 50% 50%;
+}
+
+.title3{
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 20px;
+    right: 20px;
+    font-size: 25px;
+
+    letter-spacing: 0.1em;
+    transform: translateY(-50%);
+    color: #fff;
+    text-align: center;
+}
+
+.info{
+    margin-top: 24px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.items ul::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.info .subject{
+    letter-spacing: -0.05em;
+    font-size: 18px;
+    line-height: 32px;
+    margin-bottom: 2px;
+    color: #015B28;
+    font-weight: 800;
+}
+.info .content{
+    font-size: 14px;
+    line-height: 22px;
+}
+.positionR .items>ul li.double{
+    width: 50%;
+    float: left;
+}
+
+.positionR .items>ul li .rest-item .image-wrap2{
+    padding-bottom: 51.6666666667%;
+}
+

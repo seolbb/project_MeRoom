@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="rewardDAO">
+	<resultMap type="reward" id="rewardId">
+		<result property="reward_idx" column="REWARD_IDX"/>
+		<result property="memberId" column="MEMBERID"/>
+		<result property="re_category" column="RE_CATEGORY"/>
+		<result property="point" column="POINT"/>
+		<result property="reward_date" column="REWARD_DATE"/>
+	</resultMap>
+
+
+
+	<!-- 리워드 적립 -->
+	<insert id="insertReward" parameterType="reward" >
+		INSERT INTO REWARD
+		(REWARD_IDX, MEMBERID, RE_CATEGORY, POINT, REWARD_DATE)
+		VALUES (REWARD_IDX_SEQ.NEXTVAL, #{memberId}, #{re_category}, #{point}, TO_CHAR(SYSDATE,'YYYY/MM/DD'))
+	</insert>
+	<!-- 회원 한명 리스트 -->
+	<select id="getRewardList" resultType="reward" resultMap="rewardId">
+		SELECT * FROM REWARD WHERE  MEMBERID = #{memberId} ORDER BY REWARD_DATE DESC
+	</select>
+	<!-- 총 적립금 조회 -->
+	<select id="totalReward" resultType="int" >
+		SELECT SUM(POINT) FROM REWARD WHERE MEMBERID = #{memberId}
+	</select>
+	
+	<!-- 관리자용 전체 적립금 조회 - 최근날짜순 -->
+	<select id="allRewardList" resultType="reward" resultMap="rewardId">
+		SELECT * FROM REWARD ORDER BY REWARD_DATE DESC
+	</select>
+	
+	<!-- 관리자용 날짜별 리워드 삭제 -->
+	<delete id="deleteDateRe" parameterType="reward">
+		DELETE FROM REWARD WHERE REWARD_DATE = #{reward_date }
+	</delete>
+
+	
+</mapper>
+
+
+
+
+
+
+
+

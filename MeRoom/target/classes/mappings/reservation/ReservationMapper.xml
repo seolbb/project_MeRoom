@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="reservationDAO">
+	
+	<resultMap type="reservationVO" id="reserSelectRM">
+		<result property="rIdx" column="R_IDX"/>
+		<result property="rmNumber" column="RM_NUMBER"/>
+		<result property="memberId" column="MEMBERID"/>
+		<result property="aplctDate" column="R_APLCT_DATE"/>
+		<result property="startDate" column="R_START_DATE"/>
+		<result property="endDate" column="R_END_DATE"/>
+		<result property="area" column="R_AREA"/>
+	</resultMap>
+	
+	
+	<insert id="reservationInsert" parameterType="com.spring.mr.vo.reservation.ReservationVO">
+		INSERT INTO RESERVATION(R_IDX,RM_NUMBER,MEMBERID,R_APLCT_DATE,R_START_DATE,R_END_DATE,R_AREA) 
+		 VALUES (#{rIdx},#{rmNumber},#{memberId},SYSDATE,#{startDate},#{endDate},#{area})
+	</insert>
+	
+	
+	<delete id="reserDelete">
+		DELETE FROM RESERVATION WHERE R_IDX IN(SELECT R_IDX FROM RESERVATION WHERE R_IDX
+			NOT IN(SELECT RES.R_IDX FROM RESERVATION RES JOIN PAYMENT PAY
+			ON RES.R_IDX = PAY.R_IDX))
+	</delete>
+	
+	
+
+	
+	
+	<select id="getReser" parameterType="reservationVO" resultType="reservationVO" resultMap="reserSelectRM">
+		SELECT * 
+		FROM RESERVATION WHERE R_IDX = #{rIdx}
+	</select>
+	
+	
+	
+	<update id="reserUpdate" parameterType="reservationVO">
+			UPDATE RESERVATION
+		   SET  MEMBERID = #{memberId},
+		   		R_START_DATE = #{startDate},
+		   		R_END_DATE = #{endDate},
+		   		R_AREA = #{area}
+		 WHERE R_IDX = #{rIdx}
+	</update>
+	
+	
+	
+	
+	<delete id="reserDel" parameterType="string">
+		DELETE FROM RESERVATION WHERE R_IDX = #{rIdx}
+	</delete>
+	
+	
+	<select id="roomReview" resultType="reservationVO" parameterType="map">
+		SELECT mem.nickname nickName ,SCORE score, RV_CONTENT rvContent, RV_DATE rvDate
+        FROM MEMBER MEM
+        JOIN review REV
+        ON REV.MEMBERID = MEM.MEMBERID
+        WHERE rev.r_idx IN (select DISTINCT RES.R_IDX  
+		FROM RESERVATION RES
+		JOIN REVIEW REV
+		ON RES.R_IDX = REV.R_IDX
+		WHERE RM_NUMBER LIKE #{kind})
+	</select>
+	
+	
+	<select id="reserList" parameterType="reservationVO" resultMap="reserSelectRM" resultType="reservationVO">
+	SELECT *
+	 FROM RESERVATION 
+	 WHERE R_IDX LIKE '%' || #{rIdx} || '%' AND RM_NUMBER LIKE '%' || #{rmNumber} || '%' AND MEMBERID LIKE '%' || #{memberId} || '%'
+	 </select>
+	
+	
+	<select id="getUserReser" parameterType="user" resultMap="reserSelectRM" resultType="reservationVO">
+	SELECT * 
+	FROM RESERVATION 
+	WHERE MEMBERID = #{memberId} 
+	</select>
+</mapper>
+
+
+
+
+
+
+
+

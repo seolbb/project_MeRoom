@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="onedayStateDAO">
+
+	<select id="onedayStateList" resultType="onedayState">
+	 <![CDATA[ 
+		SELECT * FROM O_RESERVATION R, O_PAYMENT P, ONEDAYCLASS O 
+		 WHERE R.OR_IDX = P.OR_IDX
+		   AND R.O_IDX = O.O_IDX
+		   AND R.OR_IDX NOT IN (SELECT OR_IDX FROM O_REFUND WHERE OR_IDX IS NOT NULL) 
+		   AND R.OR_DATE > TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+		   AND MEMBERID = #{memberId} 
+		   ORDER BY R.OR_DATE DESC
+	       ]]>
+	</select>
+	
+	<select id="lastOnedayStateList" resultType="onedayState">
+	 <![CDATA[ 
+	    SELECT * FROM O_RESERVATION R, O_PAYMENT P, ONEDAYCLASS O 
+		 WHERE R.OR_IDX = P.OR_IDX
+		   AND R.O_IDX = O.O_IDX
+		   AND R.OR_IDX NOT IN (SELECT OR_IDX FROM O_REFUND WHERE OR_IDX IS NOT NULL) 
+		   AND R.OR_DATE < TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+		   AND MEMBERID = #{memberId} 
+		   ORDER BY R.OR_DATE DESC
+	       ]]>
+	</select>
+	
+	<select id="cancelOnedayStateList" resultType="onedayState" >
+		SELECT * FROM O_RESERVATION R, O_PAYMENT P, ONEDAYCLASS O 
+		 WHERE R.OR_IDX = P.OR_IDX
+		   AND R.O_IDX = O.O_IDX
+		   AND R.OR_IDX IN (SELECT OR_IDX FROM O_REFUND WHERE OR_IDX IS NOT NULL) 
+		   AND MEMBERID = #{memberId} 
+	</select>
+ 
+ 
+	<select id="onedayStateCount" resultType="int">
+	 <![CDATA[ 
+	 SELECT NVL(NULL_DATA, 0) FROM (
+		SELECT COUNT(*) AS NULL_DATA FROM O_RESERVATION R, O_PAYMENT P, ONEDAYCLASS O 
+		 WHERE R.OR_IDX = P.OR_IDX
+		   AND R.O_IDX = O.O_IDX
+		   AND R.OR_IDX NOT IN (SELECT OR_IDX FROM O_REFUND WHERE OR_IDX IS NOT NULL) 
+		   AND R.OR_DATE > TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+		   AND MEMBERID = #{memberId})
+	       ]]>
+	</select>
+	
+	<select id="lastOnedayStateCount" resultType="int">
+	 <![CDATA[ 
+	 SELECT NVL(NULL_DATA, 0) FROM (
+	    SELECT COUNT(*) AS NULL_DATA FROM O_RESERVATION R, O_PAYMENT P, ONEDAYCLASS O 
+		 WHERE R.OR_IDX = P.OR_IDX
+		   AND R.O_IDX = O.O_IDX
+		   AND R.OR_IDX NOT IN (SELECT OR_IDX FROM O_REFUND WHERE OR_IDX IS NOT NULL) 
+		   AND R.OR_DATE < TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+		   AND MEMBERID = #{memberId} )
+	       ]]>
+	</select>
+	
+	<select id="cancelOnedayStateCount" resultType="int" >
+	SELECT NVL(NULL_DATA, 0) FROM (
+		SELECT COUNT(*) AS NULL_DATA FROM O_RESERVATION R, O_PAYMENT P, ONEDAYCLASS O 
+		 WHERE R.OR_IDX = P.OR_IDX
+		   AND R.O_IDX = O.O_IDX
+		   AND R.OR_IDX IN (SELECT OR_IDX FROM O_REFUND WHERE OR_IDX IS NOT NULL) 
+		   AND MEMBERID = #{memberId} )
+	</select>
+	
+	<select id="getOnedayState" resultType="onedayState" >
+		SELECT * FROM O_RESERVATION R, O_PAYMENT P, ONEDAYCLASS O 
+		 WHERE R.OR_IDX = P.OR_IDX
+		   AND R.O_IDX = O.O_IDX
+		   AND R.OR_IDX NOT IN (SELECT OR_IDX FROM O_REFUND WHERE OR_IDX IS NOT NULL) 
+		   AND R.OR_IDX =  #{or_idx} 
+	</select>
+
+
+	
+	
+	   		
+
+	
+</mapper>
+
+
+
+
+
+
+
+

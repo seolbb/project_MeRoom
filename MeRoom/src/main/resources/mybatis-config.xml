@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		<setting value="true" name="mapUnderscoreToCamelCase"/>  
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.spring.mr.vo.reservation.PaymentVO" alias="paymentVO"/>
+		<typeAlias type="com.spring.mr.vo.reservation.RoomVO" alias="roomVO"/>
+		<typeAlias type="com.spring.mr.vo.reservation.ReservationVO" alias="reservationVO"/>
+		
+		<typeAlias alias="user" type="com.spring.mr.vo.user.UserVO"/>
+		<typeAlias alias="reward" type="com.spring.mr.vo.user.RewardVO"/>
+		<typeAlias alias="adReward" type="com.spring.mr.vo.user.AdminRewardVO"/>
+		<typeAlias alias="review" type="com.spring.mr.vo.user.ReviewVO"/>
+		<typeAlias alias="roomState" type="com.spring.mr.vo.user.RoomStateVO"/>
+		<typeAlias alias="onedayState" type="com.spring.mr.vo.user.OnedayStateVO"/>
+		
+		<typeAlias alias="oneday" type="com.spring.mr.vo.oneday.OnedayClassVO"/>
+		<typeAlias alias="rsv" type="com.spring.mr.vo.oneday.OReservationVO"/>
+		<typeAlias alias="payment" type="com.spring.mr.vo.oneday.OPaymentVO"/>
+		<typeAlias alias="refund" type="com.spring.mr.vo.oneday.ORefundVO"/>
+		
+		<typeAlias alias="news" type="com.spring.mr.vo.cs.NewsVO"/>
+		<typeAlias alias="fa" type="com.spring.mr.vo.cs.FAVO"/>
+		<typeAlias alias="question" type="com.spring.mr.vo.cs.QuestionVO"/>
+		<typeAlias alias="answer" type="com.spring.mr.vo.cs.AnswerVO"/>
+		<typeAlias alias="event" type="com.spring.mr.vo.cs.EventVO"/>
+		<typeAlias alias="promotion" type="com.spring.mr.vo.cs.PromotionVO"/>
+		
+
+		
+	</typeAliases>
+	
+	
+
+  
+  <mappers>
+    <!-- 스프링 설정파일 mapperLocations 설정으로 대체 
+  	<mapper resource="mappings/BoardMapper.xml"/>
+  	<mapper resource="mappings/UserMapper.xml"/> -->
+  </mappers>
+  
+</configuration>

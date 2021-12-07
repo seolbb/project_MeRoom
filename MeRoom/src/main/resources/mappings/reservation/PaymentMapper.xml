@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="paymentDAO">
+	
+	<insert id="paymentInsert" parameterType="com.spring.mr.vo.reservation.PaymentVO">
+		INSERT INTO PAYMENT(PAY_IDX,R_IDX,PRICE,PAY_DATE,PAY_MNS,PAY_POINT) 
+		 VALUES (#{payIdx},#{rIdx},#{price},#{payDate},#{payMns},#{point})
+	</insert>
+
+	<select id="paymentList" resultType="com.spring.mr.vo.reservation.PaymentVO">
+		SELECT PAY_IDX payIdx, R_IDX rIdx, PRICE price,PAY_DATE payDate,PAY_MNS payMns 
+		FROM PAYMENT
+	</select>
+	
+	<select id="getPoint" resultType="int" parameterType="string">
+		SELECT PAY_POINT
+		FROM PAYMENT
+		WHERE R_IDX=#{rIdx}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+

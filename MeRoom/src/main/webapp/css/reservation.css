@@ -1,0 +1,295 @@
+    /*공통 부분 */
+    *{
+        box-sizing: border-box;
+        font-family: 'Nanum Gothic Coding', monospace;
+        margin: 0px;
+    }
+    a{
+        text-decoration: none;
+        color: #000;
+    }
+    ::selection{
+        background: #015B28;
+        color: #fff;
+    }
+    .body__container{
+         font-family: Arial, Sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #333;
+    }
+   
+    
+        #reser{       
+            border-style: solid;
+            color: #015B28;
+            margin: auto;
+            padding: 10px 10px;
+      
+        }     
+        
+        #reser:hover{
+            color: black;
+        }
+
+
+
+
+/* body */
+
+.container-full{
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow: hidden;
+    width: 100% !important;
+}
+
+.main-image{
+    height: 350px;
+    margin-bottom:80px;
+    position: relative;
+    background: #000;
+}
+
+.main-image .main-bg, .bg-image{
+    background-image: url(../img/mainImage.jpg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+}
+.title{
+    position: absolute;
+    z-index: 10;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+    animation-duration: 4s;
+    visibility: visible;
+}
+
+.main-title{
+    line-height: 1;
+    font-size: 40px;
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-name: top-title;
+ 
+}
+
+.single .single-two{
+    font-weight: 550;
+    letter-spacing: 0.1em;
+    font-family:  'Apple SD Gothic Neo', 'Malgun Gothic';
+}
+
+.main-image .title2{
+    bottom: 150px;
+    font-size: 12px;
+    color: #fff;
+    animation-name: top-summary;
+    
+}
+
+@keyframes top-title{
+0%{
+    opacity : 0;
+}
+100%{
+    opacity : 1;
+    }
+}
+
+@keyframes top-summary{
+    0%{
+        opacity : 0;
+    }
+    100%{
+        opacity : 1;
+        }
+    }
+
+.sub-container{
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto !important;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: 0 auto;
+}
+
+.reservation-search{
+    margin-top: 30px;
+    position: relative;
+}
+
+.image-samll{
+    height: 260px;
+    margin-bottom: 0;
+    position: relative;
+    background-color: #000;
+}
+
+.title-res{
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 24px;
+    position: absolute;
+    z-index: 10;
+    left: 20px;
+    right: 20px;
+    top: calc(50% - 20px);
+    color: white;
+    font-weight: 700;
+    text-align: left;
+}
+
+.title-res span{
+    text-transform: uppercase;
+}
+.relative{
+    position: relative;
+}
+
+.sc-form{
+    position: relative;
+    z-index: 20;
+    margin-bottom: 28px;
+    height: auto;
+    overflow: visible;
+    margin-top: -98px;
+}
+
+
+.sc-form form{
+    position: relative;
+    z-index: 20;
+    margin-bottom: 28px;
+}
+.sc-form form::after{
+    content: '';
+    display: table;
+    clear: both;
+}   
+
+.reservation-sc .container{
+    margin-left: auto;
+    margin-right: auto;
+    width: auto !important;
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: 1280px;
+
+}
+.reservation-sc .container .relative .sc-form form .params{
+    position: relative;
+    z-index: 10;
+    float: left;
+    width: 85%;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
+}
+
+.sc-form form .params .input-date::after{
+    content: '';
+    display: block;
+    background-color: #e5e5e5;
+    width: 1px;
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    right: 0;
+}
+
+.params .input-date{
+    width: 28%;
+    float: left;
+    position: relative;
+    z-index: 10;
+}
+
+.params .input-date button{
+    display: block;
+    padding: 0 16px;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    border: none;
+    background-color: transparent;
+    border-radius: 0;
+}
+.params .input-date button:hover{
+    color: #015B28;
+    font-weight: 800;
+    cursor: pointer;
+}
+.params .input-date button:hover:not(:disabled){
+    color: #015B28;
+    font-weight: 800;
+}
+.params .input-date button .wrap{
+    max-width: 200px;
+    display: block;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.params .input-date button .wrap:after{
+    content: '';
+    display: table;
+    clear: both;
+}
+.params .input-date button .in{
+    display: block;
+    float: left;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.params .input-date button .start-date{
+    letter-spacing: 0;
+
+    font-size: 16px;
+    display: block;
+    float: right;
+}
+
+
+
+.params .input-date button .start-date .value{
+    display: block;
+    position: relative;
+    top: -2px;
+}
+
+.params .input-date button .start-date .value input{
+    margin-top: 26.5px;
+    font-size: 16px;
+    width: 120px;
+    padding-left: 38px;
+    cursor: pointer;
+    border: none;
+}
+
+
+
+.params .input-date button:focus-within, .params .input-date button .start-date .value input:focus{
+    color: #015B28;
+    font-weight: 800;
+    cursor: pointer;
+}

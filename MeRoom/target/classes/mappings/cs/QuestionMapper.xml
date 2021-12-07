@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="questionDAO">
+
+	<!-- 회원이 문의 내역을 남길 때  -->
+	<insert id="insertQuestion" parameterType="question">
+		INSERT INTO QUESTION (Q_IDX, NAME, MEMBERID, PHONE, EMAIL, ANYTYP, Q_TITLE, Q_CONTENT, Q_REGDATE, Q_Yn)
+ 		VALUES(SEQ_QUESTION.NEXTVAL, #{name}, #{memberid}, #{phone}, #{email}, #{anyTyp} , #{qTitle}, #{qContent}, SYSDATE, #{qYn})
+	</insert>
+	
+	<select parameterType="question" id="getQnaList" resultType="question">
+	SELECT * 
+	FROM QUESTION Q LEFT OUTER JOIN ANSWER ANS ON Q.Q_IDX = ANS.Q_IDX2 
+	WHERE MEMBERID = #{memberId} ORDER BY Q.Q_REGDATE DESC 
+	</select>
+ 	
+ 	<select parameterType="question" id="userQnaList" resultType="question">
+
+		<![CDATA[ 
+				SELECT * 
+				FROM QUESTION Q
+				LEFT OUTER JOIN ANSWER ANS
+				ON Q.Q_IDX = ANS.Q_IDX2
+				WHERE MEMBERID = #{memberId} 
+				AND ROWNUM <= 3
+				ORDER BY Q.Q_REGDATE DESC
+				]]>
+	</select>
+ 	
+ 	
+ 	<!-- 관리자가 회원이 남긴 문의 리스트 확인 -->
+ 	
+	<select parameterType="question" id="getQuestionList" resultType="question">SELECT * FROM QUESTION WHERE ANYTYP LIKE '%' || #{anyTyp} || '%' AND Q_TITLE LIKE '%' || #{qTitle} || '%' AND Q_CONTENT LIKE '%' || #{qContent} || '%' </select>
+ 	
+ 	<!-- 관리자가 회원이 남긴 문의 리스트 상세 조회 -->
+ 	
+	<select parameterType="question" id="getQuestion" resultType="question">SELECT Q.*, A.A_CONTENT FROM QUESTION Q,ANSWER A WHERE Q.Q_IDX = A.Q_IDX2(+) AND Q.Q_IDX = #{qIdx} </select>
+ 	
+ 	
+ 	<!-- 회원이 문의내용을 수정할 때 -->
+	<update parameterType="question" id="updateQuestion">UPDATE QUESTIONSET ANYTYP = #{anyTyp},Q_TITLE = #{qTitle},Q_CONTENT = #{qContent}WHERE Q_IDX = #{qIdx} </update>
+ 	
+ 	<update parameterType="question" id="updateQuestionStatus">UPDATE QUESTIONSET Q_YN = 'Y'WHERE Q_IDX = #{qIdx} </update>
+ 	<!-- 회원이 문의내용을 삭제할 때 -->
+ 	
+ 	<delete id="deleteQuestion">
+ 		DELETE FROM QUESTION WHERE Q_IDX = #{qIdx}
+ 	</delete>
+ 	
+ 	
+ 	
+ 	<!-- 관리자가 조회할 때 -->
+	<select parameterType="question" id="getQuestionList_T" resultType="question">SELECT * FROM QUESTION WHERE Q_TITLE LIKE '%' || #{searchKeyword} || '%'ORDER BY Q_IDX DESC </select>
+ 	
+ 	
+ 	
+ 	
+ 	
+</mapper>

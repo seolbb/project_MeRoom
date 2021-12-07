@@ -1,0 +1,288 @@
+    /*공통 부분 */
+  
+    
+        #reser{       
+            border-style: solid;
+            color: #015B28;
+            margin: auto;
+            padding: 10px 10px;
+      
+        }     
+        
+        #reser:hover{
+            color: black;
+        }
+
+/* INPUT */
+.input--text {
+    position: relative;
+    height: 30px;
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    background: transparent;
+    display: block;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075); /* .75 아니고 .075 주의 */
+}
+.input--text:focus {
+    border-color: #015B28 !important; /* header #search 선택자를 덮어쓰기 위해서 사용 */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(000, 102, 000, .5);
+}
+
+.w100{float: left; width: 320px; padding: 12px 12px;}
+
+
+
+  /* Vendor prefix(브라우저 업체별 접두어) */
+.input--text::-webkit-input-placeholder { color: #cacaca; }
+.input--text:-ms-input-placeholder      { color: #cacaca; }
+.input--text::-moz-placeholder          { color: #cacaca; }
+
+
+/* body */
+
+#wrap {height: 810px;}
+.con {
+    margin: 0 auto;
+    max-width: 1250px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+table{
+   width: 100%;
+
+
+    border-spacing: 2px;
+    border-collapse: collapse
+    
+}
+table>thead>tr {
+    padding: 12px 0;
+    line-height: 20px;
+    font-weight: 500;
+    
+}
+
+tbody {
+    vertical-align: middle;
+}
+
+td, th {
+    padding: 10px 5px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.tb{
+   border-bottom:1px solid #e4e4e4;
+   border-bottom:2px solid black;
+}
+
+#info { 
+   text-align: center; 
+   padding: 15px px;
+}
+
+.content {
+   border-bottom: 1px solid #e4e4e4;
+   
+}
+
+.btn{
+   background-color: white;
+    border: 2px solid #015B28;
+    color: #015B28;
+    padding: 8px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+
+}
+
+.title2 {
+    text-align: center;
+   font-family: 'Nanum Square', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.05em;
+    margin-bottom: 40px;
+}
+.one {
+   font-weight: 600;
+   font-size: 16px;
+}
+
+
+.container-full{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.main-image{
+    height: 500px;
+    margin-bottom:80px;
+    position: relative;
+    background: #000;
+}
+
+.main-image .main-bg{
+    background-image: url(../img/mainImage.jpg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+}
+.title{
+    position: absolute;
+    z-index: 10;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+    animation-duration: 4s;
+}
+
+.main-title{
+    line-height: 1;
+    font-size: 40px;
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-name: top-title;
+ 
+}
+
+.single .single-two{
+    font-weight: 550;
+    letter-spacing: 0.1em;
+    font-family:  'Apple SD Gothic Neo', 'Malgun Gothic';
+}
+
+.main-image .title2{
+    bottom: 150px;
+    font-size: 12px;
+    color: #fff;
+    animation-name: top-summary;
+    
+}
+
+@keyframes top-title{
+0%{
+    opacity : 0;
+}
+100%{
+    opacity : 1;
+    }
+}
+
+@keyframes top-summary{
+    0%{
+        opacity : 0;
+    }
+    100%{
+        opacity : 1;
+        }
+    }
+
+hr{
+    display: block;
+    clear: both;
+    font-size: 0;
+    height: 0;
+    overflow: hidden;
+    border: none;
+    border-bottom: 1px solid #eaeaea;
+    margin: 2rem 0;
+    border-color: transparent;
+    color: transparent;
+}
+
+
+.relative{position: relative;}
+.order{margin-left: -10px; margin-right: -10px;}
+/* 왼쪽 메뉴 */
+.order .order-left{float:left;  width: calc(100% - 350px);    padding-left: 10px; padding-right: 10px; }
+.wrap form{margin: 0; padding: 0;}
+.form-header{line-height: 30px;  padding-top: 20px;  padding-bottom: 10px; border-bottom: 1px solid;}
+.form-header::after{ content: '';  display: table; clear: both;}
+.form-header .title1{ font-size: 21px;  letter-spacing: -0.05em;  font-weight: 700;}
+.form-body{border-bottom: 1px solid #000; padding: 20px 0; }
+.form-body label {float: left; width: 128px; line-height: 20px; padding: 7px 10px; margin-bottom: 0;  display: block; font-weight: 500;  font-size: 14px; color: #2e2e2e; 
+    transform: none; position: relative;}
+.form-body .data{ line-height: 22px; padding: 6px 0; float: left; width: calc(100% - 128px); font-size: 14px; position: relative;}
+.btn01{height: 22px; line-height: 20px; margin-left: 10px; position: relative; top: -1px; padding: 0 8px; padding: 0 8px; font-size: 12px;
+    background-color: transparent; color: #2e2e2e;   display: inline-block;  text-align: center; text-align: center; cursor: pointer; transition: .3s background-color, .3s color, .3s border-color;
+    border: 1px solid #2e2e2e;}
+.form-body::after{content:''; display: table; clear: both;}
+.form-body .data span{ color: #8c8c8c;}
+.order::after {content: ''; display: table; clear: both;}
+/*오른쪽 메뉴 */
+.order .order-right{top: 70px; width: 320px; float: left; padding-left: 10px;  padding-right: 10px; position: sticky;}
+.order .order-right::after { content: ''; display: table; clear: both; } 
+.order .order-right .pay-item {padding: 25px 10px;}
+.order .order-right .pay-item .title1{font-size: 14px; font-weight: 500; margin-bottom: 10px;}
+.order .order-right .pay-item .box .box-item .box-title{font-size: 12px; color: #015B28; margin-bottom: 5px;}
+.order .order-right .pay-item .box .box-item .box-info{height: 22px;}
+.order .order-right .pay-item .box .box-item .box-info .detail {float: left;  font-size: 14px;}
+.order .order-right .pay-item .box .box-item .box-info .detail2{float: right; letter-spacing: 0.1em;  font-size: 14px; margin-top:3px;}
+/* 포인트 영역 */
+.order .order-right .pay-point{padding:25px 10px; border-top: 1px solid #2e2e2e;}
+
+.detail-pay{float:left;   color: #015B28; line-height: 50px;     font-size: 16px;     font-weight: 600;}
+.detail2-pay{float: right;  font-size: 30px; margin-top:3px; color: #015B28; font-weight: 600;}
+
+.pay-submit{margin-top: 20px;}
+
+.pay-submit button{
+    
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    background-color: #fff;
+    color: #015B28;
+    margin: 0;
+    padding: 10px;
+    border-radius: 0;
+    letter-spacing: 0.1em;
+    text-align: center;
+    border: 2px solid #015B28;
+    white-space: nowrap;
+}
+.pay-submit button:hover{color: #fff; background: #015B28; border : 2px solid #015B28 }
+
+
+.point span{
+    width: 124px;
+    text-align: right;
+    display: inline-block;
+}
+.input-point{
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+}
+.payment-mthd{margin-bottom: 50px;}
+.form-body .btn2{margin-left: 10px; line-height: 11px; width: 75px; height: 29px;    border: 1px solid #d0d0d0; color: #4c4c4c;  background-color: #fff;    cursor: pointer; }
+
+.form-body .btn2:active{
+    color: #fff; background: #015B28; border : 2px solid #015B28
+}

@@ -1,0 +1,357 @@
+/*공통 부분 */
+*{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+.body__container{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+
+.section{
+    position: relative;
+}
+
+input{
+    font-weight: 500;
+    max-width: 100%;
+    transition: border .2s ease-in-out;
+}
+
+input:not([type="checkbox"]) {
+    outline: none;
+}
+.w500{
+    width: 500px !important;
+}
+
+.w15{
+    width: 15% !important;
+
+}
+
+.w25{
+    width: 25% !important;
+}
+
+
+
+
+
+
+
+/*헤더 부분 */
+.header{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 0%;
+    position: relative;
+    align-items: center;
+    display: flex;
+    height: 120px;
+    justify-content: space-between
+}
+
+
+
+.header .logo{
+    display: flex;
+    align-items: center;
+}
+
+.right-nav{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+
+.header .img__link{
+    margin-bottom: 20px;
+}
+
+
+.header .main__link{
+    margin-left: 30px;
+    padding: 0;
+    background: transparent;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 19px;
+    color: #000;
+}
+
+.header .sub__link{
+    margin-right: 30px;
+    padding: 0;
+    background: transparent;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 19px;
+    color: #000;
+}
+
+
+
+.header .main__link:hover, .sub__link:hover {
+    color: rgba(102,178,255);
+    text-decoration: underline;
+}
+#quest__link{
+
+    background: rgba(204,255,000,0.6);
+    border-radius: 30px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
+    color: 	#483d8b;
+}
+#quest__link:hover{
+    border: 1px solid rgb(000,153,255);
+    
+}
+#quest__link:active{
+    transform: translateY(3px);
+}
+/* 배너부분 */
+#banner{
+    position: relative;
+    background: url('../asset/people-g1280.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    padding: 0 20px;
+    width: 100%;
+    margin-bottom: 70px;
+
+}
+/* 배너부분 그림 어둡게
+#banner::before{
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+     height: 100%;
+    background: rgba(0,0,0,.2);
+}
+*/
+
+#banner .text--box{
+    max-width: 1180px;
+    margin: 0 auto;
+    position: relative;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25), 
+    0 1px 25px rgba(0,0,0,.75);
+}
+
+#banner .main__title,.sub__title{
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+}
+#banner .main__title{
+    top: 70px;
+    left: 50%;
+    font-weight: bold;
+    font-size: 45px;
+}
+#banner .sub__title{
+
+    left: 50%;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+
+#banner .banner--box{
+    position: relative;
+    top: 203px;
+    max-width: 580px;
+    margin: 0 auto;
+
+}
+
+#question{
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    color: #444;
+    height: 50px;
+    padding-left: 40px;
+    padding-right: 20px;
+    width: 400px;
+    box-shadow: 0px 0px 12px rgb(0 0 0 / 12%);
+    transition: width .5s ease-in-out;
+}
+
+#question:focus{
+    width: 600px;
+    border: 5px solid #fffacd;
+}
+
+
+/* container  스타일*/
+.container{
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: none;
+    padding: 0;
+}
+
+.list .item{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 5px rgb(00 0 0 / 20%);
+    border-radius: 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex : 1;
+    margin: 0 15px 30px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.list .item:hover{
+    box-shadow: 0px 0px 10px rgba(051,051,255,1);
+}
+.list .item .item-link{
+
+    padding: 34px 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+
+}
+.item-title{
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 30px;
+    color: #000;
+}
+.item-content{
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* 테이블 그룹 넓이 지정 */
+table{
+    text-indent: initial;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.notice{
+    position: relative;
+    max-width: 1180px;
+
+    box-sizing: border-box;
+
+}
+.notice>div{
+    text-align: center;
+}
+
+.notice>div>p{
+    font-weight: bold;
+    font-size: 30px;
+    
+}
+table{
+    margin: 0 auto;
+    box-shadow: 0px 0px 12px rgb(0 0 0 / 12%);
+}
+
+table caption{
+    text-align: right;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.notice table thead th{
+    padding: 10px 0;
+    background: #f9f9f9;
+    vertical-align: middle;
+    color: #111;
+    font-weight: bold;
+    border-bottom: 1px solid #989898;
+   
+}
+
+.notice table tr td{
+    padding: 13px 10px;
+    vertical-align: middle;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.admin_id, .regDate{
+    text-align: center;
+}
+
+
+
+/*footer 지울계획 칸용 어차피 include로 써야함 */
+#footer{
+    margin-top: 50px;
+    height: 200px;
+    background: #999;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: #cfcfcf;
+    cursor: pointer;
+}
+
+/* 미디어쿼리 */
+@media (min-width: 768px){
+
+    .header {
+        max-width: 1180px;
+        height: 120px;
+        }
+    
+    #quest__link{
+        margin-right: 25px;
+        padding: 0 17px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 50px;
+        font-size: 15px;
+        font-weight: bold;
+        }
+    
+    
+    .container {
+        padding: 0;
+        width: 90%;
+        }
+    
+    .inner {
+         margin-bottom: 60px;
+        }
+    .list{
+        margin: 0 -15px;
+    }
+}

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="roomStateDAO">
+	 <resultMap type="roomState" id="roomStateP">
+      <result property="r_idx" column="R_IDX"/>
+      <result property="rm_number" column="RM_NUMBER"/>
+      <result property="r_start_date" column="R_START_DATE"/>
+      <result property="r_end_date" column="R_END_DATE"/>
+      <result property="r_area" column="R_AREA"/>
+      <result property="pay_idx" column="PAY_IDX"/>
+      <result property="price" column="PRICE"/>
+      <result property="pay_date" column="PAY_DATE"/>
+      <result property="pay_mns" column="PAY_MNS"/>
+      <result property="pay_point" column="PAY_POINT"/>
+      <result property="rm_kind" column="RM_KIND"/>
+      <result property="file_name" column="FILE_NAME"/>
+      <result property="rm_price" column="RM_PRICE"/>
+      <result property="rf_idx" column="RF_IDX"/>
+      <result property="rf_info" column="RF_INFO"/>
+      <result property="rf_money" column="RF_MONEY"/>
+      <result property="rf_cancel" column="RF_CANCEL"/>
+   </resultMap>
+
+
+
+	<select id="roomStateList" resultType="roomState" resultMap="roomStateP">
+	 <![CDATA[ 
+		SELECT * FROM RESERVATION R, PAYMENT P, ROOM M
+		 WHERE R.R_IDX = P.R_IDX 
+		   AND R.RM_NUMBER = M.RM_NUMBER
+		   AND R.R_IDX NOT IN(SELECT R_IDX FROM REFUND WHERE R_IDX IS NOT NULL) 
+		   AND R.R_START_DATE > TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+		   AND MEMBERID = #{memberId} 
+	     ORDER BY R.R_START_DATE DESC
+	       ]]>
+	</select>
+	
+	<select id="roomStateCount" resultType="int" parameterType="String" >
+	
+	 <![CDATA[ 
+	  SELECT NVL(NULL_DATA, 0) FROM (
+		SELECT COUNT(*) AS NULL_DATA FROM RESERVATION R, PAYMENT P, ROOM M
+		 WHERE R.R_IDX = P.R_IDX 
+		   AND R.RM_NUMBER = M.RM_NUMBER
+		   AND R.R_IDX NOT IN(SELECT R_IDX FROM REFUND WHERE R_IDX IS NOT NULL) 
+		   AND R.R_START_DATE > TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+		   AND MEMBERID = #{memberId} )
+	       ]]>
+
+	</select>
+	
+	<select id="lastRoomStateList" resultType="roomState" resultMap="roomStateP">
+	 <![CDATA[ 
+	 
+		SELECT * FROM RESERVATION R, PAYMENT P, ROOM M
+		 WHERE R.R_IDX = P.R_IDX 
+		   AND R.RM_NUMBER = M.RM_NUMBER
+		   AND R.R_IDX NOT IN(SELECT R_IDX FROM REFUND WHERE R_IDX IS NOT NULL) 
+		   AND R.R_START_DATE < TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+		   AND MEMBERID = #{memberId} 
+	     ORDER BY R.R_START_DATE DESC
+	     
+	       ]]>
+	</select>
+	
+	<select id="lastRoomStateCount" resultType="int"  parameterType="String" >
+	 <![CDATA[ 
+	 SELECT NVL(NULL_DATA, 0) FROM (
+		SELECT COUNT(*) AS NULL_DATA  FROM RESERVATION R, PAYMENT P, ROOM M
+		 WHERE R.R_IDX = P.R_IDX 
+		   AND R.RM_NUMBER = M.RM_NUMBER
+		   AND R.R_IDX NOT IN(SELECT R_IDX FROM REFUND WHERE R_IDX IS NOT NULL) 
+		   AND R.R_START_DATE < TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+		   AND MEMBERID = #{memberId} )
+	       ]]>
+	</select>
+	
+	<select id="cancelRoomStateList" resultType="roomState" resultMap="roomStateP">
+		SELECT * FROM RESERVATION R, REFUND F, ROOM M, PAYMENT P
+		 WHERE R.R_IDX = F.R_IDX
+		   AND R.RM_NUMBER = M.RM_NUMBER
+		   AND R.R_IDX = P.R_IDX
+		   AND MEMBERID=#{memberId} 
+	</select>
+	
+	<select id="cancelRoomStateCount" resultType="int" parameterType="String" >
+	SELECT NVL(NULL_DATA, 0) FROM (
+		SELECT COUNT(*) AS NULL_DATA  FROM RESERVATION R, REFUND F, ROOM M, PAYMENT P
+		 WHERE R.R_IDX = F.R_IDX
+		   AND R.RM_NUMBER = M.RM_NUMBER
+		   AND R.R_IDX = P.R_IDX
+		   AND MEMBERID=#{memberId} )
+	</select>
+	
+	
+ 
+ 	<select id="reviewStateList" resultType="roomState" resultMap="roomStateP">
+ 	 <![CDATA[ 
+		SELECT * FROM RESERVATION R, ROOM M 
+		 WHERE R.RM_NUMBER = M.RM_NUMBER
+		   AND R_IDX NOT IN (SELECT R_IDX FROM REVIEW WHERE R_IDX IS NOT NULL) 
+		   AND R_IDX NOT IN (SELECT R_IDX FROM REFUND WHERE R_IDX IS NOT NULL) 
+		   AND R.R_START_DATE < TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+		   AND MEMBERID = #{memberId}    ]]>
+	</select>
+	
+	
+	<select id="getRoomState" resultType="roomState" resultMap="roomStateP">
+		SELECT * FROM RESERVATION R, PAYMENT P, ROOM M
+		 WHERE R.R_IDX = P.R_IDX 
+		   AND R.RM_NUMBER = M.RM_NUMBER
+		   AND R.R_IDX NOT IN(SELECT R_IDX FROM REFUND WHERE R_IDX IS NOT NULL) 
+		   ANDR.R_IDX= #{r_idx} 
+	</select>
+
+
+	
+	
+	   		
+
+	
+</mapper>
+
+
+
+
+
+
+
+

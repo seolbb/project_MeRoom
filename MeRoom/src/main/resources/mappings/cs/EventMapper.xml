@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="eventDAO">
+
+	<!-- 관리자가 이벤트게시글 입력 -->
+	<insert id="insertEvent" parameterType="event">
+		INSERT INTO EVENT (EV_IDX, EV_TITLE, EV_SUBTITLE, EV_CONTENT, EV_THUMBNAIL, EV_REGDATE) 
+		VALUES (SEQ_EVENT.NEXTVAL, #{evTitle}, #{evSubtitle}, #{evContent}, #{evThumbnail},SYSDATE)
+	</insert>
+	
+	<!-- 이벤트 전체 목록(뉴스메인) -->
+ 	
+ 	<select id="getEventList" resultType="event">
+ 	SELECT * FROM EVENT ORDER BY EV_IDX DESC
+ 	
+ 	</select>
+ 	
+ 	<!-- 이벤트 게시글 하나 상세 보기 -->
+ 	
+ 	<select id="getEvent" parameterType="event" resultType="event">
+ 		SELECT * FROM EVENT WHERE EV_IDX = #{evIdx}
+ 	
+ 	</select>
+ 	
+ 	
+ 	<update id="updateEvent" parameterType="event">
+ 	UPDATE EVENT
+			SET EV_TITLE = #{evTitle}, 
+				EV_SUBTITLE = #{evSubtitle},
+				EV_CONTENT = #{evContent},
+				EV_THUMBNAIL =#{evThumbnail}
+				WHERE EV_IDX = #{evIdx}
+ 	</update>
+ 	
+ 	<delete id="deleteEvent" parameterType="event">
+ 		DELETE FROM EVENT WHERE EV_IDX = #{evIdx}
+ 	</delete>
+ 	
+ 	
+</mapper>

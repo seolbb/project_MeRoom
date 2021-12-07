@@ -1,0 +1,354 @@
+.wrap{
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+}
+.header-title{
+    margin-top: 62px;
+    position: relative;
+}
+
+.title-main{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 120px;
+    text-align: center;
+
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    letter-spacing: -0.2px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+.back-icon{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 10px;
+    width: 62px;
+    height: 62px;
+    cursor: pointer;
+}
+.header-block .back-icon img{
+    width: 12px;
+    height: 18px;
+}
+
+.header-title .header-block{
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 11px 11px 11px 0px;
+    max-width: 600px;
+    width: 100%;
+    height: 62px;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(238, 238, 238);
+    z-index: 15;
+}
+.myPage{
+    min-height: 100%;
+    background-color: #f0f0f0;
+}
+
+.table1{
+    transform: translateZ(0px);
+    height: 790px;
+}
+
+.t-main{
+    position: relative;
+    background-color: rgb(240, 240, 240);
+    padding: 1px 0px;
+}
+
+.t-sub{
+    width: auto;
+    max-width: 600px;
+    height: 650px;
+    overflow: hidden;
+    position: relative;
+}
+.dtail{
+	overflow : auto;
+    height: 650px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+.prifile-container{
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 19px 0px 8px;
+}
+
+.dtail-main{
+    position: relative;
+    margin: 8px 8px 4px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: rgb(170 170 170 / 50%) 0px 0px 3px 0px;
+    padding: 10px 10px 13px;
+
+}
+
+.hrDetail{
+    margin-top : 20px;
+    margin-bottom: 0px;
+    background-color: rgb(232, 232, 232);
+    border-right-color: rgb(232, 232, 232);
+    border-bottom-color: rgb(232, 232, 232);
+    border-left-color: rgb(232, 232, 232);
+
+
+}
+
+.prifile-container{
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 19px 0px 8px;
+}
+h2.h2-board{
+    color: #aaa;
+    font-size: 20px;
+    font-weight: bold;
+
+    text-align: center;
+    
+}
+.profile-left img{
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 90px;
+    margin-right: 30px;
+
+}
+.profile-left{
+    display: flex;
+    flex-flow: row nowrap;
+ 
+}
+
+
+.profileIn{
+    flex: 3 1 0%;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin-left: 10px;
+    width: calc(100% - 100px);
+}
+.userName{
+    color: rgb(0, 0, 0);
+    font-size: 1em;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.dateUpdate{
+    color: rgb(89, 89, 89);
+    font-size: 0.75em;
+    font-weight: 400;
+}
+
+
+/*이미지*/
+
+
+img.fileImage{
+    margin-top: 10px;
+    margin-left: 150px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+
+.padding-box{
+    background-color: #fff;
+    padding: 0 20px;
+}
+.padding-box .padding-top{
+    padding-top:20px
+}
+.padding-top .textbox{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.name{
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -.2px;
+    color: #000;
+}
+
+#job1{
+    margin-left: 8px;
+    font-size: 13px;
+    color: #999;
+}
+#job2{
+    margin-top : 10px
+}
+
+/*상세 정보 */
+.detail{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    padding: 20px 0px;
+    max-width: 100%;
+}
+
+.menu-One{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    color: rgb(136, 136, 136);
+    letter-spacing: -0.2px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19px;
+
+}
+
+.menu-two{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    letter-spacing: -0.2px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19px;
+ 
+}
+
+.btn12{
+
+    width: 150px;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 45px;
+    border-radius: 4px;
+    background: rgb(255, 112, 0);
+    color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#pFont{
+    
+    color: white;
+    font-weight: bold;
+}
+
+
+.btn-group01{
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center
+}
+
+.btn03{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+
+
+
+.content{
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.content .items{
+    font-size: 0.75em;
+    font-weight: 400;
+    text-align: left;
+    color: rgb(89, 89, 89);
+}
+
+#ta-paging{
+	margin-left : 100px;
+	display:flex;
+	margin-top : 10px;
+	justify-content: space-around;
+}
+#btn-Cr{
+	position : relative;
+	left : 110px;
+	padding: 3px 10px;
+}
+
+.header{
+	width: 100%;
+
+    box-sizing: border-box;
+}
+.hedaer .tage{
+	border: 1px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+}
+
+.tage-content{
+	display: flex;
+   justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+
+  .input--text {
+    height: 40px;
+    width: 500px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075); /* .75 아니고 .075 주의 */
+  }
+  .input--text:focus {
+    border-color: #51a7e8 !important; /* header #search 선택자를 덮어쓰기 위해서 사용 */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(81, 167, 232, .5);
+  }
+  /* Vendor prefix(브라우저 업체별 접두어) */
+  .input--text::-webkit-input-placeholder { color: #cacaca; }
+  .input--text:-ms-input-placeholder      { color: #cacaca; }
+  .input--text::-moz-placeholder          { color: #cacaca; }
+
+  
+  

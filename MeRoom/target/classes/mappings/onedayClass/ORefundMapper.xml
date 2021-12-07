@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="oRefundDAO">
+
+ 	<!-- 환불 -->
+	<insert id="insertRefund" parameterType="refund">
+		INSERT INTO O_REFUND (ORF_IDX, OR_IDX, ORF_MONEY, ORF_DATE)
+		VALUES (ORF_IDX_SEQ.NEXTVAL, #{orIdx}, #{orfMoney}, SYSDATE)
+	</insert>
+	
+</mapper>
+
+
+
+
+
+
+
+

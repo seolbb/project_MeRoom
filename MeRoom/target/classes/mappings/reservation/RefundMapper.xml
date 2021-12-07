@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="refundDAO">
+	
+	<insert id="refundInsert" parameterType="com.spring.mr.vo.reservation.RefundVO">
+		INSERT INTO REFUND(RF_IDX,R_IDX,RF_INFO,RF_MONEY,RF_CANCEL) 
+		 VALUES (REFUND_SEQ.NEXTVAL,#{rIdx},#{rfInfo},#{rfMoney},SYSDATE)
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+

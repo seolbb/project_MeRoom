@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="promotionDAO">
+
+	<!-- 관리자가 프로모션 게시글 입력 -->
+	<insert id="insertPromotion" parameterType="promotion">
+		INSERT INTO PROMOTION (PR_IDX, PR_TITLE, PR_SUBTITLE, PR_CONTENT,PR_THUMBNAIL, PR_REGDATE) 
+		VALUES (SEQ_PROMOTION.NEXTVAL, #{prTitle}, #{prSubtitle}, #{prContent}, #{prThumbnail}, SYSDATE )
+	</insert>
+	
+	<!-- 프로모션 전체 목록(뉴스메인) -->
+ 	
+ 	<select id="getPromotionList" resultType="promotion">
+ 	SELECT * FROM PROMOTION ORDER BY PR_IDX DESC
+ 	
+ 	</select>
+ 	
+ 	<!-- 이벤트 게시글 하나 상세 보기 -->
+ 	
+ 	<select id="getPromotion" parameterType="promotion" resultType="promotion">
+ 		SELECT * FROM PROMOTION WHERE PR_IDX = #{prIdx}
+ 	
+ 	</select>
+ 	
+ 	
+ 	<update id="updatePromotion" parameterType="promotion">
+ 	UPDATE PROMOTION
+			SET PR_TITLE = #{prTitle}, 
+				PR_SUBTITLE = #{prSubtitle},
+				PR_CONTENT = #{prContent},
+				PR_THUMBNAIL = #{prThumbnail} 
+				WHERE PR_IDX = #{prIdx}
+ 	</update>
+ 	
+ 	<delete id="deletePromotion" parameterType="promotion">
+ 		DELETE FROM PROMOTION WHERE PR_IDX = #{prIdx}
+ 	</delete>
+ 	
+ 	
+</mapper>

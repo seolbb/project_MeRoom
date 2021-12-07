@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="reviewDAO">
+	<resultMap type="review" id="reviewId">
+		<result property="rv_idx" column="RV_IDX"/>
+		<result property="r_idx" column="R_IDX"/>
+		<result property="memberId" column="MEMBERID"/>
+		<result property="rv_content" column="RV_CONTENT"/>
+		<result property="rv_date" column="RV_DATE"/>
+		<result property="score" column="SCORE"/>
+		<result property="rm_kind" column="RM_KIND"/>
+		<result property="r_start_date" column="R_START_DATE"/>
+		<result property="r_end_date" column="R_END_DATE"/>
+	</resultMap>	
+	
+
+	<!-- 리뷰작성 -->
+	<insert id="insertReview" parameterType="review" >
+		INSERT INTO REVIEW
+		(RV_IDX, R_IDX, MEMBERID, RV_CONTENT, RV_DATE, SCORE)
+		VALUES (RV_IDX_SEQ.NEXTVAL, #{r_idx}, #{memberId}, #{rv_content}, TO_CHAR(SYSDATE,'YYYY/MM/DD'), #{score})
+	</insert>
+	
+	<update id="updateReview" parameterType="review">
+		UPDATE REVIEW SET
+		    RV_CONTENT = #{rv_content},
+		    RV_DATE = SYSDATE,
+		    SCORE = #{score}
+		WHERE RV_IDX = #{rv_idx}
+	</update>
+	
+	<delete id="deleteReview" parameterType="review">
+		DELETE FROM REVIEW WHERE RV_IDX = #{rv_idx}
+	</delete>
+	
+	<select id="getReview" parameterType="user" resultType="review" resultMap="reviewId">
+		SELECT * FROM REVIEW WHERE RV_IDX = #{rv_idx}
+	</select>
+	
+	<select id="getReviewList" parameterType="user" resultType="review" resultMap="reviewId">
+		SELECT * FROM REVIEW V, RESERVATION R, ROOM M 
+		 WHERE R.RM_NUMBER = M.RM_NUMBER
+		   AND V.R_IDX = R.R_IDX
+		   AND R.R_IDX IN (SELECT R_IDX FROM RESERVATION WHERE R_IDX IS NOT NULL) 
+		   AND V.MEMBERID = #{memberId}
+		 ORDER BY R.R_START_DATE DESC
+	</select>
+	
+	<select id="reviewList" resultType="review" resultMap="reviewId">
+		SELECT * FROM REVIEW
+	</select>
+	
+	<select id="userReviewList" parameterType="user" resultType="user" resultMap="reviewId">
+		<![CDATA[ 
+				SELECT * FROM(
+			SELECT * FROM REVIEW WHERE MEMBERID = #{MEMBERID} ORDER BY REVIEW.RV_DATE DESC)
+			WHERE ROWNUM <= 3
+		]]>
+	</select>
+
+
+	
+
+	
+</mapper>
+
+
+
+
+
+
+
+

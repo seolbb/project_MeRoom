@@ -1,0 +1,255 @@
+/*공통 부분 */
+   
+/* body */
+
+
+/*button */ 
+
+
+form {
+    margin: 0; padding: 0;
+}
+
+
+.container-full{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.main-image{
+    height: 500px;
+    margin-bottom:60px;
+    position: relative;
+    background: #000;
+}
+
+.main-image .main-bg{
+    background-image: url(../img/mainImage.jpg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+}
+.title{
+    position: absolute;
+    z-index: 10;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+    animation-duration: 4s;
+}
+
+.main-title{
+    line-height: 1;
+    font-size: 40px;
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-name: top-title;
+ 
+}
+
+.single .single-two{
+    font-weight: 550;
+    letter-spacing: 0.1em;
+    font-family:  'Apple SD Gothic Neo', 'Malgun Gothic';
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    width: auto !important;
+
+}
+
+@keyframes top-title{
+0%{
+    opacity : 0;
+}
+100%{
+    opacity : 1;
+    }
+}
+
+/* 예약 메뉴 */
+.container{max-width: 1180px;}
+.relative{position: relative;}
+.reservation-body{float: left;    padding-right: 15px; min-height: 1px;     width: calc(100% - 310px);}
+.reservation-body .body_one {border-top: 1px solid;}
+.section-title{padding: 20px 0; border-top: 1px solid #232; font-size: 14px; line-height: 1.5;}
+.section-title .title2{ width: 160px; padding: 0 10px; font-weight: 700; float: left;}
+.section-title .doc-body{width: calc(100% - 160px); margin-bottom: 0; float: left;}
+.section-title::after{content: '';  display: table;  clear: both;}
+.section2{border: none;}
+.section-end{border-bottom: 1px solid black; margin-bottom: 20px;}
+.reservation-panel{float: left; padding-left: 15px;  top: 110px; width: 310px; z-index: 10; position: sticky;}
+.reservation-panel .header2{display: block; margin-bottom: 15px;}
+.title3{visibility: visible; letter-spacing: -0.05em; font-size: 24px; line-height: 1.2; margin-bottom: 10px; }
+#result-form{position: relative;     margin-top: 15px; }
+.reservation-panel form .row { margin-bottom: 0; }
+.reservation-panel form .row::after{content: ""; display: table; clear: both;}
+.reservation-panel form .row .field { width: 50%;display: block; color: #232; font-size: 14px; left: auto; top: auto;  position: relative; margin-bottom: 10px;float: left;position: relative; padding-left: 5px; padding-right: 5px;}
+  
+/* INPUT */
+  .input--text {
+    position: relative;
+    height: 30px;
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    background: transparent;
+    display: block;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075); /* .75 아니고 .075 주의 */
+}
+.input--text:focus {
+    border-color: #015B28 !important; /* header #search 선택자를 덮어쓰기 위해서 사용 */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(000, 102, 000, .5);
+}
+  /* Vendor prefix(브라우저 업체별 접두어) */
+.input--text::-webkit-input-placeholder { color: #cacaca; }
+.input--text:-ms-input-placeholder      { color: #cacaca; }
+.input--text::-moz-placeholder          { color: #cacaca; }
+
+#w100{width: 100%;}
+.reward-info{margin-bottom: 4px;}
+.reward-info .re-title i{font-weight: 700; line-height: 1; margin-left: 7px;}
+.reward-info .re-title span { font-size: 12px;}
+.reward-info .re-title span span{color:#015B28; font-weight: 800;}
+  /*오른쪽 결제 정보 */
+.price-info{margin-bottom: 10px; color: #015B28; line-height: 40px;}
+.price-info .price-title{margin-left: 5px; float: left; font-size: 20px; font-weight: 800; width: 30%;}
+.price-info .price1{float: right; color: #015B28;  font-weight: 800; width: 68%; padding-left: 90px;}
+
+.price-info .price1 input{text-align: left; border: none; height: 40px; font-size: 20px; width: 100%; color: #015B28; font-weight: 800;}
+.flex{display: flex; }
+.price-info::after{content: ""; display: table;  clear: both;}
+
+/*제출 버튼 */
+.btn-submit{position: relative; margin-bottom: 10px;}
+.btn-submit .btn01{
+    padding: 10px; 
+
+    color: #fff;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(000, 102, 000, 0.3);
+    width: 100%;
+    font-weight: 600;
+    border-width: 2px solid #015B28;
+    background-color: #015B28;}
+
+.btn-submit .btn01:hover{
+    cursor: pointer;
+    /*
+    background-color: white;
+    color : #015B28;
+    */
+} 
+
+.btn-submit .btn02{
+    margin-top: 20px;
+    background-color: white;
+    color : #015B28;
+}
+.box-full{
+	position :relative;
+}
+/* .btn-submit .btn02:hover {color: #fff;     background-color: #015B28;} */
+
+#reserWrap::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/*popup버튼*/
+.popup-wrap{display:none; opacity: 0; position: fixed;z-index: 9998;top: 0; right: 0; bottom: 0; left: 0; transition: .4s opacity;}
+.popup-wrap .screen{position: fixed; z-index: 0;top: 0;right: 0; bottom: 0;left: 0;background: #000;opacity: .2;}
+.popup-wrap .outer{display: table; position: relative; z-index: 2; width: 100%; height: 100%;}
+.popup-wrap .outer .inner{display: table-cell; padding-top: 50px; padding-bottom: 50px; vertical-align: middle;}
+.popup-wrap .outer .inner .popup-content{
+    width: 500px; 
+    padding: 20px 30px;
+    min-height: 10px;
+    background: #fff;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(000, 102, 000, 0.3);
+}
+.popup-wrap .outer .inner .popup-content:before{content: ''; display: block; width: 20px; height: 20px; float: right;}
+.popup-wrap .outer .inner .popup-content p{
+    letter-spacing: 2px;
+    font-weight: 300;
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+.popup-wrap .outer .inner .popup-content .popup-detail{font-weight: 300; font-size: 16px;}
+.popup-wrap .outer .inner .popup-content .buttons{margin-top: 10px; margin-bottom: -30px; }
+.popup-wrap .outer .inner .popup-content .buttons button {margin-right: 20px; margin-top: 10px; 
+    background: white; border: 2px solid #015B28;
+    color: #015B28;
+    cursor: pointer;
+    display: inline-block;
+    height: 50px;
+    line-height: 20px;
+    font-weight: 400;
+    padding: 0 40px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+    
+.popup-wrap .outer .inner .popup-content .buttons button.payment:hover{
+    background: #015B28; border: 2px solid #015B28; color: white;
+    }
+.button.reser{border-width: 2px; font-weight: 700; margin-right: 20px; margin-top: 10px; vertical-align: middle;}
+.popup-wrap .outer .inner .popup-content .buttons button.clear{width:143px;margin-left: 28px; background: white; border: 1px solid black; color: black;}
+.popup-wrap .outer .inner .popup-content .buttons button.clear:hover{color: #015B28; font-weight: 800;}
+
+.popup-wrap .outer .inner .popup-content button.popup-close{
+    background-color: #015B28;
+    opacity: 1;
+    width: 30px;
+    height: 30px;
+    right: 0px;
+    top: 0px;
+    border: 2px solid #015B28;
+    transition: .3s background-color;
+    display: block;
+    position: absolute;
+    z-index: 1;
+}
+
+.popup-wrap .outer .inner .popup-content button.popup-close:hover{
+    background-color: transparent;
+}
+.popup-wrap .outer .inner .popup-content button.popup-close::before,
+.popup-wrap .outer .inner .popup-content button.popup-close::after{
+    background-color: #fff;
+    margin-top: -1px;
+    height: 2px;
+    width: 33.3333%;
+    left: 50%;
+    margin-left: -16.66665%;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: rotate(45deg);
+}
+.popup-wrap .outer .inner .popup-content button.popup-close:hover::before,
+.popup-wrap .outer .inner .popup-content button.popup-close:hover::after{
+    background-color: #000;
+}
+
+.popup-wrap .outer .inner .popup-content button.popup-close::after{
+    transform: rotate(-45deg);
+}

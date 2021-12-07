@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="roomDAO">
+	
+	<resultMap type="roomVO" id="roomSelectRM">
+		<result property="rmNumber" column="RM_NUMBER"/>
+		<result property="rmKind" column="RM_KIND"/>
+		<result property="rmArea" column="RM_AREA"/>
+		<result property="rmInfo" column="RM_INFO"/>
+		<result property="rmPrice" column="RM_PRICE"/>
+		<result property="fileName" column="FILE_NAME"/>
+	</resultMap>
+	
+
+	
+	<insert id="insert" parameterType="com.spring.mr.vo.reservation.RoomVO">
+		INSERT INTO ROOM(RM_NUMBER,RM_KIND,RM_AREA,RM_INFO,RM_PRICE,FILE_NAME)
+		VALUES (#{rmNumber},#{rmKind}, #{rmArea}, #{rmInfo},#{rmPrice},#{fileName})
+	</insert>
+	
+
+	
+	<select id="getRoom" parameterType="roomVO" resultType="roomVO" resultMap="roomSelectRM">
+		SELECT RM_NUMBER, RM_KIND, RM_AREA, RM_INFO, RM_PRICE, FILE_NAME 
+		FROM ROOM WHERE RM_NUMBER = #{rmNumber}
+	</select>
+	
+		
+	<select id="getRoomNumber" parameterType="int" resultType="roomVO" resultMap="roomSelectRM">
+		SELECT RM_NUMBER, RM_KIND, RM_AREA, RM_INFO, RM_PRICE, FILE_NAME 
+		FROM ROOM WHERE RM_NUMBER = #{rmNumber}
+	</select>
+	
+	
+	<select id="getRoomList" resultType="roomVO" parameterType="roomVO" resultMap="roomSelectRM">
+		<![CDATA[ 
+		SELECT RM_KIND, RM_AREA,RM_PRICE, COUNT(*) count FROM ROOM 
+			WHERE RM_NUMBER NOT IN(
+			SELECT R.RM_NUMBER 
+			FROM ROOM R
+			JOIN RESERVATION RES
+			ON  R.RM_NUMBER = RES.RM_NUMBER
+			WHERE R_START_DATE BETWEEN #{startDate} AND #{endDate} OR
+			R_END_DATE BETWEEN #{startDate} AND #{endDate}) AND RM_AREA>=#{rmArea}
+			GROUP BY RM_KIND, RM_AREA, RM_PRICE       
+			HAVING COUNT(*) >= #{count}
+			]]>
+	</select>
+		
+	<select id="getRoomInfo" resultType="roomVO" parameterType="roomVO" resultMap="roomSelectRM">
+		 SELECT * FROM ROOM
+			WHERE RM_NUMBER NOT IN(
+			SELECT R.RM_NUMBER 
+			FROM ROOM R
+			JOIN RESERVATION RES
+			ON  R.RM_NUMBER = RES.RM_NUMBER
+			WHERE R_START_DATE BETWEEN #{startDate} AND #{endDate} OR
+			R_END_DATE BETWEEN #{startDate} AND #{endDate})
+	</select>
+	
+	<!--  예약 입력을 위한 roomvo데이터 -->
+	<select id="getInfoMap" resultType="roomVO" parameterType="map" resultMap="roomSelectRM">
+		 SELECT * FROM ROOM
+			WHERE RM_NUMBER NOT IN(
+			SELECT R.RM_NUMBER 
+			FROM ROOM R
+			JOIN RESERVATION RES
+			ON  R.RM_NUMBER = RES.RM_NUMBER
+			WHERE R_START_DATE BETWEEN #{startDate} AND #{endDate} OR
+			R_END_DATE BETWEEN #{startDate} AND #{endDate})
+	</select>
+	
+	
+	<!-- List 전체 조회 -->
+	<select id="roomList" resultType="roomVO" parameterType="roomVO" resultMap="roomSelectRM">
+		SELECT * FROM ROOM
+	</select>
+	
+	<update id="updateRoom" parameterType="roomVO">
+		UPDATE ROOM
+		   SET  RM_KIND = #{rmKind},
+		   		RM_AREA = #{rmArea},
+		   		RM_INFO = #{rmInfo},
+		   		FILE_NAME = #{fileName},
+		   		RM_PRICE = #{rmPrice}
+		 WHERE RM_NUMBER = #{rmNumber}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE
+		FROM ROOM
+		WHERE RM_NUMBER = #{rmNumber}
+	</delete>
+	
+	
+	
+	<select id="roomsearch" resultType="int" parameterType="string">
+
+		SELECT MIN(RM_NUMBER) rmNumber
+		FROM ROOM
+		WHERE RM_KIND LIKE UPPER(#{rmKind})
+	
+	</select>
+	
+	<select id="serachFile" resultType="string" parameterType="int">
+		SELECT FILE_NAME fileName
+		FROM ROOM
+		WHERE RM_NUMBER = #{rmNumber}
+		
+	</select>
+	
+</mapper>

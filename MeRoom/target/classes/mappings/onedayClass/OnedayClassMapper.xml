@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="onedayClassDAO">
+
+ 	<!-- 글입력 -->
+	<insert id="insertClass" parameterType="oneday">
+		INSERT INTO ONEDAYCLASS (O_IDX, O_CATEGORY, O_NAME, O_DATE, O_TIME, O_LOCATION, O_PRICE, O_CNT, O_INFO, O_IMG)
+		VALUES (O_IDX_SEQ.NEXTVAL, #{oCategory}, #{oName}, 
+				#{oDate}, #{oTime}, #{oLocation}, 
+				#{oPrice}, #{oCnt}, #{oInfo}, #{oImg} )
+	</insert>
+	
+	<!-- 글수정 -->
+	<update id="updateClass" parameterType="oneday" >
+		UPDATE ONEDAYCLASS
+		SET O_CATEGORY = #{oCategory},
+			O_NAME = #{oName},
+			O_DATE = #{oDate},
+			O_TIME = #{oTime},
+			O_LOCATION = #{oLocation},
+			O_PRICE = #{oPrice},
+			O_CNT = #{oCnt},
+			O_INFO = #{oInfo},
+			O_IMG = #{oImg}
+		WHERE O_IDX = #{oIdx}
+	</update>
+	
+	<!-- 글삭제 -->
+	<delete id="deleteClass" parameterType="oneday" >
+		DELETE FROM ONEDAYCLASS WHERE O_IDX = #{oIdx}
+	</delete>
+	
+	<!-- 글 상세조회 -->
+	<select id="getClass" parameterType="oneday" resultType="oneday">
+		SELECT * FROM ONEDAYCLASS WHERE O_IDX = #{oIdx}
+	</select>
+	
+	<!-- 글 전체목록 조회 -->
+	<select id="getClassList" parameterType="oneday" resultType="oneday">
+		SELECT * FROM ONEDAYCLASS
+	</select>
+	
+	<!-- 결제후 남은 수량 조회 -->
+	<select id="restCnt" resultType="String">
+		SELECT SUM(OR_COUNT) FROM (SELECT * FROM O_RESERVATION RSV, O_PAYMENT PAY WHERE RSV.OR_IDX = PAY.OR_IDX)
+		WHERE O_IDX = #{oIdx} AND OR_DATE = #{orDate}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+

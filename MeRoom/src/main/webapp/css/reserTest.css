@@ -1,0 +1,350 @@
+    /*공통 부분 */
+
+
+/* body */
+
+.container-full{
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow: hidden;
+    width: 100% !important;
+}
+
+.main-image{
+    height: 350px;
+    margin-bottom:80px;
+    position: relative;
+    background: #000;
+}
+
+.main-image .main-bg, .bg-image{
+    background-image: url(../img/snowroom.jpg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+}
+.title{
+    position: absolute;
+    z-index: 10;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+    animation-duration: 4s;
+    visibility: visible;
+}
+
+
+.main-title{
+    line-height: 1;
+    font-size: 40px;
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-name: top-title;
+ 
+}
+
+.single .single-two{
+    font-weight: 550;
+    letter-spacing: 0.1em;
+    font-family:  'Apple SD Gothic Neo', 'Malgun Gothic';
+}
+
+.main-image .title2{
+    bottom: 150px;
+    font-size: 12px;
+    color: #fff;
+    animation-name: top-summary;
+    
+}
+
+@keyframes top-title{
+0%{
+    opacity : 0;
+}
+100%{
+    opacity : 1;
+    }
+}
+
+@keyframes top-summary{
+    0%{
+        opacity : 0;
+    }
+    100%{
+        opacity : 1;
+        }
+    }
+
+.sub-container{
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto !important;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: 0 auto;
+}
+a{
+	cursor: pointer;
+}
+.reservation-search{
+    margin-top: 30px;
+    position: relative;
+}
+
+.image-samll{
+    height: 260px;
+    margin-bottom: 0;
+    position: relative;
+    background-color: #000;
+}
+
+.title-res{
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 24px;
+    position: absolute;
+    z-index: 10;
+    left: 20px;
+    right: 20px;
+    top: calc(50% - 40px);
+    color: white;
+    font-weight: 700;
+    text-align: left;
+}
+
+.title-res span{text-transform: uppercase;}
+.relative{
+    position: relative;
+}
+
+.sc-form{
+    position: relative;
+    z-index: 20;
+    margin-bottom: 28px;
+    height: auto;
+    overflow: visible;
+    margin-top: -98px;
+}
+
+
+.sc-form form{
+    position: relative;
+    z-index: 20;
+    margin-bottom: 28px;
+}
+.sc-form form::after{
+    content: '';
+    display: table;
+    clear: both;
+}   
+
+.reservation-sc .container{
+    margin-left: auto;
+    margin-right: auto;
+    width: auto !important;
+
+    max-width: 1200px;
+
+}
+.reservation-sc .container .relative .sc-form form .params{
+
+    position: relative;
+    z-index: 10;
+    float: left;
+    width: 85%;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
+}
+.reservation-sc .container .relative .sc-form2{
+    position: relative;
+    z-index: 20;
+    color: #fff;
+    height: auto;
+    overflow: visible;
+    margin-top: -120px;
+}
+.reservation-sc .container .relative .sc-form2 .params{
+    position: relative;
+    z-index: 10;
+    float: left;
+    width: 85%;
+
+}
+.sc-form form .params .input-date::after,
+.params .input-select::after{
+    content: '';
+    display: block;
+    background-color: #e5e5e5;
+    
+    width: 1px;
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    right: 0;
+}
+
+.params .input-date{
+    width: 28%;
+    float: left;
+    position: relative;
+    z-index: 10;
+}
+
+.params .box-data, .params .box-data2{width: 28%; float: left; position: relative; z-index: 10;color:#fff ; font-weight: 700;}
+.params .box-data2{width: 22%;}
+.params .input-date input{
+    display: block;
+    padding: 0 16px;
+    font-size: 18px;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    border: none;
+    background-color: transparent;
+    border-radius: 0;
+    line-height: 70px;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Malgun Gothic', sans-serif;
+}
+.params .input-date input:focus{
+    color: #015B28;
+    font-weight: 800;
+    cursor: pointer;
+}
+.params .input-date input:hover:not(:disabled){ color: #015B28; font-weight: 800;}
+.params .input-select{ width: 22%; float: left; position: relative;}
+.params .input-select button{
+    display: block;
+    padding: 0 16px;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    border: none;
+    background-color: transparent;
+    border-radius: 0;
+    cursor: pointer;
+}
+.params .input-select button .wrap{
+    display: block;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    overflow: hidden;
+    font-size: 18px;
+}
+.params .input-select button:hover{
+	color: #015B28; font-weight: 800;
+}
+
+
+.params .input-select .select{background-color: #fff; padding: 7px 0; position: absolute; top: 100%; left: 0; width: 100%; visibility: hidden; }
+.params .input-select .select .item{
+    cursor: pointer;
+    padding: 5px 8px;
+    font-size: 14px;
+    text-align: center;
+   /* transition: .3s color, .3s background-color; */
+}
+
+.params .input-select .select .item:hover{ color: #fff; background: #015B28; }
+.active2{color: #fff; background: #015B28;}
+.params .input-select button .wrap .active1{color: #015B28;  font-weight: 800;  cursor: pointer;}
+.reservation-sc .container .relative .sc-form form .submit{float: right; position: relative; z-index: 1; width: calc(14% - 8px);}
+.reservation-sc .container .relative .sc-form form .submit .search-one{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -400;
+    background-color: #fff;
+    cursor: wait;
+    transition: .6s opacity;
+}
+.reservation-sc .container .relative .sc-form form .submit .search-one button{
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 70px;
+    font-size: 16px;
+    background-color: #015B28;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    letter-spacing: 0.1em;
+    text-align: center;
+    border: 2px solid #015B28;
+    white-space: nowrap;
+}
+.reservation-sc .container .relative .sc-form form .submit .search-one button:hover{color: #015B28; background: #fff; border : 2px solid #015B28}
+.reservation-result .reser-group {padding: 0px 10px; margin: 0px 30px; background: #f5f5f5; padding-top: 30px;}
+.reservation-result .reser-group .relative {padding-bottom: 20px;}
+.reservation-result .reser-group .relative .result-header{letter-spacing: 0.1em; line-height: 29px; margin-bottom: 17px;font-size: 16px;font-weight: 500;}
+.reservation-result .reser-group .relative .dynamic-list {position: relative;}
+.reservation-result .reser-group .relative .dynamic-list .items{ margin: 0 -10px;}
+.reservation-result .reser-group .relative .dynamic-list .items::after{content: ''; display: table; clear: both;}
+.relative .dynamic-list .items .list-item{margin-bottom: 25px; float: left; padding: 0 10px; position: relative; width: 25%; cursor: pointer;}
+.relative .dynamic-list .items .list-item .link-item{display: block; position: relative; cursor: pointer;}
+.relative .dynamic-list .items .list-item .link-item .image{
+    padding-bottom: 69%;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 0;
+    border: 1px solid #e5e5e5;
+    border-bottom: none;
+    overflow: hidden;
+    transition: border-color .2s ease;
+}
+.relative .dynamic-list .items .list-item .link-item .image .zoom-image{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f7f7f7;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.relative .dynamic-list .items .list-item .link-item .info{ letter-spacing: -0.05em; display: block; padding: 15px 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    transition: border-color .2s ease;}
+
+.relative .dynamic-list .items .list-item .link-item .info .info-title{
+    display: block;
+    height: 20px;
+    letter-spacing: 5px;
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+.relative .dynamic-list .items .list-item .link-item .info .info-title span{display: inline; color: black;}
+.relative .dynamic-list .items .list-item .link-item .info .info-price{
+    margin-top: 5px;
+    color: #2e2e2e;
+    letter-spacing: 0;
+    font-size: 14px;
+    display: block;
+}
+.relative .dynamic-list .items .list-item .link-item .info .info-price span{display: inline-block;color: #2e2e2e; line-height: normal; vertical-align: middle;}

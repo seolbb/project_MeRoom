@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="newsDAO">
+
+	<!-- 관리자가 뉴스 게시글 입력 -->
+	<insert id="insertNews" parameterType="news">
+		INSERT INTO NEWS (NE_IDX, NE_TITLE, NE_SUBTITLE, NE_CONTENT, NE_THUMBNAIL, NE_REGDATE) 
+		VALUES (SEQ_NEWS.NEXTVAL, #{neTitle}, #{neSubtitle}, #{neContent},#{neThumbnail}, SYSDATE )
+	</insert>
+	
+	<!-- 뉴스 전체 목록(메인) -->
+	<select id="getNewsList"  resultType="news">
+		SELECT * FROM NEWS ORDER BY NE_IDX DESC
+	</select>
+ 	
+ 	<!-- 하나의 뉴스 게시글 보기 -->
+ 	<select id="getNews"  parameterType="news" resultType="news" >
+		SELECT * FROM NEWS WHERE NE_IDX = #{neIdx}
+	</select>
+ 	
+ 	<!-- 게시글 수정 -->
+ 	<update id="updateNews" parameterType="news">
+ 	UPDATE NEWS
+			SET NE_TITLE = #{neTitle}, 
+				NE_SUBTITLE = #{neSubtitle},
+				NE_CONTENT = #{neContent},
+				NE_FILENAME = #{neFilename},
+				NE_THUMBNAIL = #{neThumbnail} 
+				WHERE NE_IDX = #{neIdx}
+ 	</update>
+ 	
+ 	<delete id="deleteNews" parameterType="news">
+ 		DELETE FROM NEWS WHERE NE_IDX = #{neIdx}
+ 	</delete>
+ 	
+ 	
+</mapper>

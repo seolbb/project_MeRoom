@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="adRewardDAO">
+	<resultMap type="adReward" id="adRewardId">
+		<result property="re_category" column="RE_CATEGORY"/>
+		<result property="reward_per" column="REWARD_PER"/>
+		<result property="reward_num" column="REWARD_NUM"/>
+	</resultMap>	
+
+	<!-- 적립금 인서트 -->
+	<insert id="insertAdReward" parameterType="adReward">
+		INSERT INTO ADMINREWARD (RE_CATEGORY, REWARD_NUM)
+		VALUES(#{re_category}, #{reward_num})
+	</insert>
+	
+	<!-- 적립률 인서트 -->
+	<insert id="insertAdRewardPer" parameterType="adReward">
+		INSERT INTO ADMINREWARD (RE_CATEGORY, REWARD_PER)
+		VALUES(#{re_category}, #{reward_per})
+	</insert>
+	
+	<!-- 적립금 조회 -->
+	<select id="searchPoint" resultType="adReward" resultMap="adRewardId">
+		SELECT * FROM ADMINREWARD WHERE RE_CATEGORY = #{re_category}
+	</select>
+	
+	<select id="perPoint" resultType="int" parameterType="string">
+		SELECT REWARD_PER reward_per FROM ADMINREWARD WHERE RE_CATEGORY = #{re_category}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+

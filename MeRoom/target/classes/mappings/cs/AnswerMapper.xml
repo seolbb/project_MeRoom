@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="answerDAO">
+
+	<insert parameterType="answer" id="insertAnswer">INSERT INTO ANSWER (A_IDX, Q_IDX2, A_CONTENT, A_REGDATE)
+	VALUES(SEQ_ANSWER.NEXTVAL, #{qIdx2}, #{aContent}, SYSDATE) </insert>
+ 	
+ 	
+ 	<!-- 관리자가 회원이 남긴 문의에 대한 답변  -->
+	<select parameterType="answer" id="getAnswer" resultType="answer">SELECT * FROM ANSWER WHERE A_IDX = #{aIdx} </select>
+	 	
+	<select id="getAnswerList" resultType="answer">SELECT * FROM ANSWER ORDER BY A_IDX DESC </select>
+ 	
+	<update parameterType="answer" id="updateAnswer">UPDATE ANSWERSET A_CONTENT = #{aContent}WHERE A_IDX = #{aIdx} </update>
+ 	
+	<delete parameterType="answer" id="deleteAnswer">DELETE FROM ANSWER WHERE A_IDX = #{aIdx} </delete>
+ 	
+ 	
+</mapper>

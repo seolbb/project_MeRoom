@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="faDAO">
+
+	<insert id="insertFA" parameterType="fa">
+		INSERT INTO FA (F_IDX, F_TITLE, F_CONTENT) 
+		VALUES (SEQ_FA.NEXTVAL,#{fTitle}, #{fContent})
+	</insert>
+	
+	<select id="getFAList2"  resultType="fa">
+		SELECT * FROM FA ORDER BY F_IDX DESC
+	</select>
+	
+	<select id="getFA"  parameterType="fa" resultType="fa">
+		SELECT * FROM FA WHERE F_IDX = #{fIdx}
+	</select>	
+
+ 	<update id="updateFA" parameterType="fa">
+ 	UPDATE FA
+			SET F_TITLE = #{fTitle}, 
+				F_CONTENT = #{fContent} 
+				WHERE F_IDX = #{fIdx}
+ 	</update>
+ 	
+ 	<delete id="deleteFA" parameterType="fa">
+ 		DELETE FROM FA WHERE F_IDX = #{fIdx}
+ 	</delete>
+ 	
+ 	
+ 	
+</mapper>

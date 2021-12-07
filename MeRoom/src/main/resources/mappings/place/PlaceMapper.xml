@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="placeDAO">
+	
+	<insert id="insertPlace" parameterType="com.spring.mr.vo.place.PlaceVO">
+		INSERT INTO PLACE (PID, PTITLE, PTIME, PPHONE, PLOCATION, PCONTENT, PFILEPATH, PLAT, PLNG, PTEXT)
+		VALUES ((SELECT NVL(MAX(PID),0)+1 FROM PLACE), #{ptitle}, #{ptime}, #{pphone}, #{plocation},
+				 #{pcontent}, #{pfilepath}, #{plat}, #{plng}, #{ptext})
+	</insert>
+	
+	<select id="getPlaceList" resultType="com.spring.mr.vo.place.PlaceVO" parameterType="com.spring.mr.vo.place.PlaceVO" >
+		SELECT * FROM PLACE ORDER BY PID
+	</select>
+	
+	 <select id="getPlace" resultType="com.spring.mr.vo.place.PlaceVO" parameterType="com.spring.mr.vo.place.PlaceVO" >
+		SELECT * FROM PLACE WHERE PID = #{pid}
+	</select> 
+	
+	<update id="updatePlace" parameterType="com.spring.mr.vo.place.PlaceVO">
+		UPDATE PLACE
+			SET PTITLE = #{ptitle},
+				PTIME = #{ptime},
+				PPHONE = #{pphone},
+				PLOCATION = #{plocation},
+				PCONTENT = #{pcontent},
+				PFILEPATH = #{pfilepath},
+				PLAT = #{plat},
+				PLNG = #{plng},
+				PTEXT = #{ptext}
+			WHERE PID = #{pid}	
+	</update>
+	
+	<delete id="deletePlace" parameterType="com.spring.mr.vo.place.PlaceVO">
+		DELETE FROM PLACE WHERE PID = #{pid}
+	</delete>
+	
+<!-- 	<select id="getPlaceList1" resultType="com.spring.mr.vo.place.PlaceVO" parameterType="com.spring.mr.vo.place.PlaceVO" > -->
+<!-- 		SELECT * FROM PLACE  -->
+<!-- 		WHERE 1=1 -->
+<!-- 			<if test="searchCondition == 'PTITLE' "> -->
+<!-- 	  			AND PTITLE LIKE '%'|| #{searchKeyword} ||'%'  -->
+<!-- 	  		</if> -->
+<!-- 	  		ORDER BY PID DESC -->
+<!-- 	</select> -->
+	
+<!-- 	<select id="getPlaceList_T" parameterType="com.spring.mr.vo.place.PlaceVO" resultType="com.spring.mr.vo.place.PlaceVO"> -->
+<!-- 	  	SELECT * FROM PLACE  -->
+<!-- 	  	WHERE TITLE LIKE '%'|| #{searchKeyword} ||'%'  -->
+<!-- 	  	ORDER BY PID DESC -->
+<!-- 	 </select> -->
+	
+</mapper>
+  

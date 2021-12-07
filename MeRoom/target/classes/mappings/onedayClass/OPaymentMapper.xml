@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="oPaymentDAO">
+
+ 	<!-- 글입력 -->
+	<insert id="insertPayment" parameterType="payment">
+		INSERT INTO O_PAYMENT (OP_IDX, OR_IDX, OP_MONEY, OP_DATE, OP_METHOD, OP_POINT)
+		VALUES (#{opIdx}, #{orIdx}, #{opMoney}, #{opDate}, #{opMethod}, #{opPoint})
+	</insert>
+	
+	<select id="getOpoint" resultType="int">
+	SELECT OP_POINT FROM O_PAYMENT WHERE OR_IDX = #{orIdx}
+	</select>
+	
+	<select id="getOpMoney" resultType="int">
+	SELECT OP_MONEY FROM O_PAYMENT WHERE OR_IDX = #{orIdx}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="oReservationDAO">
+
+ 	<!-- 예약하기 -->
+	<insert id="insertRsv" parameterType="rsv">
+		INSERT INTO O_RESERVATION (OR_IDX, O_IDX, MEMBERID, OR_DATE, OR_TIME, OR_COUNT)
+		VALUES (#{orIdx}, #{oIdx}, #{memberid}, 
+				#{orDate}, #{orTime}, #{orCount})
+	</insert>
+	
+	<!-- 예약 삭제 -->
+	<delete id="deleteRsvVO" parameterType="rsv">
+		DELETE FROM O_RESERVATION WHERE OR_IDX = #{orIdx}
+	</delete>
+	
+	<!-- 결제 안된 예약내역 삭제 -->
+	<delete id="deleteRsv">
+		DELETE FROM O_RESERVATION WHERE OR_IDX IN (SELECT OR_IDX FROM O_RESERVATION WHERE OR_IDX NOT IN(
+			SELECT RSV.OR_IDX FROM O_RESERVATION RSV, O_PAYMENT PAY WHERE RSV.OR_IDX=PAY.OR_IDX))
+	</delete>
+	
+	   <!-- 예약 전제 리스트 가져오기 -->
+   <select id="getRsvList" parameterType="rsv" resultType="rsv">
+      SELECT DISTINCT R.OR_DATE AS orDate, R.O_IDX AS oIdx, O.O_NAME AS oName
+          FROM MEMBER M,
+                O_RESERVATION R,
+                ONEDAYCLASS O
+        WHERE R.MEMBERID = M.MEMBERID AND R.O_IDX = O.O_IDX
+           AND M.NAME LIKE '%' || #{mName} || '%' AND R.OR_DATE LIKE '%' || #{orDate} || '%' AND O.O_NAME LIKE '%' || #{oName} || '%'
+           AND R.OR_DATE >= TO_CHAR(SYSDATE, 'YYYY/MM/DD')
+         ORDER BY orDate
+   </select>
+   
+      <!-- 예약 상세 내역 -->
+   <select id="getRsv" parameterType="rsv" resultType="rsv">
+      SELECT R.O_IDX AS O_IDX, O.O_NAME AS O_NAME, O.O_LOCATION AS O_LOCATION, R.OR_DATE AS OR_DATE, R.OR_TIME AS OR_TIME,
+                O.O_PRICE AS O_PRICE, R.MEMBERID AS MEMBERID, R.OR_COUNT AS OR_COUNT, O.O_CATEGORY AS O_CATEGORY, M.NAME AS M_NAME,
+                O.O_IMG AS O_IMG, O.O_INFO AS O_INFO
+           FROM MEMBER M,
+                 O_RESERVATION R,
+                ONEDAYCLASS O
+         WHERE R.MEMBERID = M.MEMBERID AND R.O_IDX = O.O_IDX
+             AND O.O_NAME = #{oName} AND R.OR_DATE = #{orDate}
+   </select>
+   
+   
+      <!-- 예약 상세 내역 (특정일) -->
+   <select id="getDayList" parameterType="rsv" resultType="rsv">
+      SELECT R.O_IDX AS O_IDX, O.O_NAME AS O_NAME, O.O_LOCATION AS O_LOCATION, R.OR_DATE AS OR_DATE, R.OR_TIME AS OR_TIME,
+                O.O_PRICE AS O_PRICE, R.MEMBERID AS MEMBERID, R.OR_COUNT AS OR_COUNT, O.O_CATEGORY AS O_CATEGORY, M.NAME AS M_NAME,
+                O.O_IMG AS O_IMG, O.O_INFO AS O_INFO
+           FROM MEMBER M,
+                 O_RESERVATION R,
+                ONEDAYCLASS O
+         WHERE R.MEMBERID = M.MEMBERID AND R.O_IDX = O.O_IDX
+             AND R.OR_DATE = #{orDate}
+   </select>
+	
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
