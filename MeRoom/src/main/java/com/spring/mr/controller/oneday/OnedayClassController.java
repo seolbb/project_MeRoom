@@ -408,7 +408,6 @@ public class OnedayClassController {
 	 }
 	 
 	//--------------------------------------------------------------------------------
-	 
 	// 결제
 	@RequestMapping("/insertPayment.do")
 	@ResponseBody
@@ -421,42 +420,42 @@ public class OnedayClassController {
 	}
 
 	//--------------------------------------------------------------------------------
-	
-	   @RequestMapping("/rsvRefund.do")
-	   @Transactional(rollbackFor = Exception.class) 
-	   public String reserRefund(@RequestParam String orIdx, @RequestParam int orfMoney, HttpSession session) {
-	      int result = 0;
-	      System.out.println(orIdx +", "+ orfMoney);
-	      
-	      // 사용한 적립금 가져오기
-	      int point = paymentService.getOpoint(orIdx);
-	      System.out.println("point : " + point);
-	      
-	      // 총 결제 금액 환불하기
-	      ORefundVO vo = new ORefundVO();
-	      vo.setOrfMoney(orfMoney - point);
-	      vo.setOrIdx(orIdx);
-	      System.out.println(vo);
-	      
-	      // 환불 insert
-	      result = refundService.insertRefund(vo);
-	      
-	      // 예약 내역 삭제
-	      //rsvService.deleteRsvVO(orIdx);
-	      
-	      // 적립금 다시 돌려주기
-	      RewardVO rewarvo = new RewardVO();
-	      UserVO uservo = (UserVO) session.getAttribute("vo");
-	      rewarvo.setMemberId(uservo.getMemberId());
-	      rewarvo.setRe_category("클래스 예약");
-	      rewarvo.setPoint(point);
-	      
-	      rewardService.insertReward(rewarvo);
-	      
-	      
-	      System.out.println(result);
-	      return "onedayCancel.do";
-	   }
+	// 환불
+	@RequestMapping("/rsvRefund.do")
+	@Transactional(rollbackFor = Exception.class) 
+	public String reserRefund(@RequestParam String orIdx, @RequestParam int orfMoney, HttpSession session) {
+	int result = 0;
+	System.out.println(orIdx +", "+ orfMoney);
+
+	// 사용한 적립금 가져오기
+	int point = paymentService.getOpoint(orIdx);
+	System.out.println("point : " + point);
+
+	// 총 결제 금액 환불하기
+	ORefundVO vo = new ORefundVO();
+	vo.setOrfMoney(orfMoney - point);
+	vo.setOrIdx(orIdx);
+	System.out.println(vo);
+
+	// 환불 insert
+	result = refundService.insertRefund(vo);
+
+	// 예약 내역 삭제
+	//rsvService.deleteRsvVO(orIdx);
+
+	// 적립금 다시 돌려주기
+	RewardVO rewarvo = new RewardVO();
+	UserVO uservo = (UserVO) session.getAttribute("vo");
+	rewarvo.setMemberId(uservo.getMemberId());
+	rewarvo.setRe_category("클래스 예약");
+	rewarvo.setPoint(point);
+
+	rewardService.insertReward(rewarvo);
+
+
+	System.out.println(result);
+	return "onedayCancel.do";
+	}
 	 
 
 	
