@@ -46,10 +46,13 @@ import com.spring.mr.service.oneday.OPaymentService;
 import com.spring.mr.service.oneday.ORefundService;
 import com.spring.mr.service.oneday.OReservationService;
 import com.spring.mr.service.oneday.OnedayClassService;
+import com.spring.mr.service.user.RewardService;
 import com.spring.mr.vo.oneday.OPaymentVO;
 import com.spring.mr.vo.oneday.ORefundVO;
 import com.spring.mr.vo.oneday.OReservationVO;
 import com.spring.mr.vo.oneday.OnedayClassVO;
+import com.spring.mr.vo.user.RewardVO;
+import com.spring.mr.vo.user.UserVO;
 
 @Controller
 @SessionAttributes({"oneday", "rsv", "pay"})
@@ -65,6 +68,9 @@ public class OnedayClassController {
 	
 	@Autowired
 	private ORefundService refundService;
+	
+	@Autowired
+	private RewardService rewardService;
 	
 	public OnedayClassController() {
 		System.out.println("---> OnedayClassController() 객체생성");
@@ -438,12 +444,14 @@ public class OnedayClassController {
 	      // 예약 내역 삭제
 	      //rsvService.deleteRsvVO(orIdx);
 	      
-	      // 적립금 다시 돌려주기 (지우면 안됨 )
-//	      rewarvo.setMemberId(uservo.getMemberId());
-//	      rewarvo.setRe_category("클래스 예약");
-//	      rewarvo.setPoint(price);
-//	      
-//	      rewardService.insertReward(rewarvo);
+	      // 적립금 다시 돌려주기
+	      RewardVO rewarvo = new RewardVO();
+	      UserVO uservo = (UserVO) session.getAttribute("vo");
+	      rewarvo.setMemberId(uservo.getMemberId());
+	      rewarvo.setRe_category("클래스 예약");
+	      rewarvo.setPoint(point);
+	      
+	      rewardService.insertReward(rewarvo);
 	      
 	      
 	      System.out.println(result);
