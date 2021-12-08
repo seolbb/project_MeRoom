@@ -29,3 +29,6 @@
 
 
 ### 📌VIEW
+![002](https://user-images.githubusercontent.com/92971809/145172995-06267ce8-0b3a-46d2-b1f5-d651293de01f.png)
+![003](https://user-images.githubusercontent.com/92971809/145172998-ed506a64-2aa4-4874-ae1b-2733bd40407d.png)
+![004](https://user-images.githubusercontent.com/92971809/145173000-2512dc93-95b9-423a-9b6e-92ef1ec1f586.png)
