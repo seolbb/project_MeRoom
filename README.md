@@ -20,7 +20,7 @@
   * (서버기술) : Spring, Mybatis, Apache Tomcat 9.0, Java , Maven, JSP, JSTL
   * (화면기술) : HTML5, CSS3, JavaScript, JQuery, JSP, Aajx
   * (데이터 베이스) : oracle
-  * (사용API) : KAKAO MAP, i'mport, JSCalender, Google Developers, KAKAO Developers, Naver DEvelopers, Coolsms<br>
+  * (사용API) : KAKAO MAP, i'mport, JSCalender, datepicker, Google Developers, KAKAO Developers, Naver DEvelopers, Coolsms<br>
           Summernote, SMTP 
           
           
