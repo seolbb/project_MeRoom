@@ -29,5 +29,5 @@
 
 ### 📌VIEW
 ![002](https://user-images.githubusercontent.com/92971809/145175816-0d9aaa7e-12f3-43a0-908e-05a2fee58ac6.png)
-![004](https://user-images.githubusercontent.com/92971809/145952916-4f3fc6b8-06b7-4306-90a1-18a5df452320.png)
+![004](https://user-images.githubusercontent.com/92971809/145957394-7407293d-6b3f-416d-926c-b4b39f8f3302.png)
 ![005](https://user-images.githubusercontent.com/92971809/145952931-656c40a4-004d-4e91-a229-8080129f43a8.png)
